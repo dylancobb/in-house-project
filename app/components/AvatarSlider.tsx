@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-// import "./styles.css";
+import './styles.css';
 import { useKeenSlider, KeenSliderPlugin } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
-import './style.css';
 
-const AdaptiveHeight: KeenSliderPlugin = (slider) => {
-  function updateHeight() {
-    slider.container.style.height =
-      slider.slides[slider.track.details.rel].offsetHeight + 'px';
-  }
-  slider.on('created', updateHeight);
-  slider.on('slideChanged', updateHeight);
-};
+// const AdaptiveHeight: KeenSliderPlugin = (slider) => {
+//   function updateHeight() {
+//     slider.container.style.height =
+//       slider.slides[slider.track.details.rel].offsetHeight + 'px';
+//   }
+//   slider.on('created', updateHeight);
+//   slider.on('slideChanged', updateHeight);
+// };
 
-export default function AvatarSlider() {
+export default function App() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
@@ -27,75 +24,20 @@ export default function AvatarSlider() {
       created() {
         setLoaded(true);
       },
-    },
-    [AdaptiveHeight]
+    }
+    // [AdaptiveHeight]
   );
 
   return (
     <>
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
-          <div className="keen-slider__slide number-slide1">
-            <FontAwesomeIcon
-              icon={faUser}
-              style={{ color: '#37c8be' }}
-              width={55}
-              height={55}
-            />
-          </div>
-          <div
-            className="keen-slider__slide number-slide2"
-            style={{ height: 50 }}
-          >
-            <FontAwesomeIcon
-              icon={faUser}
-              style={{ color: '#4d81db' }}
-              width={55}
-              height={55}
-            />
-          </div>
-          <div
-            className="keen-slider__slide number-slide3"
-            style={{ height: 50 }}
-          >
-            <FontAwesomeIcon
-              icon={faUser}
-              style={{ color: '#4d81db' }}
-              width={55}
-              height={55}
-            />
-          </div>
-          <div className="keen-slider__slide number-slide4">
-            {' '}
-            <FontAwesomeIcon
-              icon={faUser}
-              style={{ color: '#FF6C22' }}
-              width={55}
-              height={55}
-            />
-          </div>
-          <div
-            className="keen-slider__slide number-slide5"
-            style={{ height: 50 }}
-          >
-            <FontAwesomeIcon
-              icon={faUser}
-              style={{ color: '#FFC436' }}
-              width={55}
-              height={55}
-            />
-          </div>
-          <div
-            className="keen-slider__slide number-slide6"
-            style={{ height: 50 }}
-          >
-            <FontAwesomeIcon
-              icon={faUser}
-              style={{ color: '#4d81db' }}
-              width={55}
-              height={55}
-            />
-          </div>
+          <div className="keen-slider__slide number-slide1">1</div>
+          <div className="keen-slider__slide number-slide2">2</div>
+          <div className="keen-slider__slide number-slide3">3</div>
+          <div className="keen-slider__slide number-slide4">4</div>
+          <div className="keen-slider__slide number-slide5">5</div>
+          <div className="keen-slider__slide number-slide6">6</div>
         </div>
         {loaded && instanceRef.current && (
           <>
@@ -119,7 +61,7 @@ export default function AvatarSlider() {
           </>
         )}
       </div>
-      {loaded && instanceRef.current && (
+      {/* {loaded && instanceRef.current && (
         <div className="dots">
           {[
             ...Array(instanceRef.current.track.details.slides.length).keys(),
@@ -135,7 +77,7 @@ export default function AvatarSlider() {
             );
           })}
         </div>
-      )}
+      )} */}
     </>
   );
 }
@@ -145,16 +87,15 @@ function Arrow(props: {
   left?: boolean;
   onClick: (e: any) => void;
 }) {
-  const disabled = props.disabled ? ' arrow--disabled' : '';
+  const disabeld = props.disabled ? ' arrow--disabled' : '';
   return (
     <svg
       onClick={props.onClick}
       className={`arrow ${
         props.left ? 'arrow--left' : 'arrow--right'
-      } ${disabled}`}
+      } ${disabeld}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      // style={{ height: '500px' }}
     >
       {props.left && (
         <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
