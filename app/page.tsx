@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import Image from "next/image";
+import Image from 'next/image';
 // import Carousel from "nuka-carousel";
-import AvatarSlider from "./components/AvatarSlider";
+import AvatarSlider from './components/AvatarSlider';
 
 export default function Home() {
   return (
