@@ -1,12 +1,13 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Carousel from 'nuka-carousel';
+import Image from "next/image";
+// import Carousel from "nuka-carousel";
+import AvatarSlider from "./components/AvatarSlider";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-2">
-      <Carousel className="min-h-max">
+      {/* <Carousel className="min-h-max">
         <div className="flex flex-col items-center justify-between p-2">
           <Image
             priority
@@ -25,7 +26,9 @@ export default function Home() {
           width={100}
           alt="Write a sentence"
         />
-      </Carousel>
+      </Carousel> */}
+
+      <AvatarSlider />
     </main>
   );
 }
