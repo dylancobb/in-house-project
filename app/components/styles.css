@@ -1,3 +1,8 @@
+:root {
+  --light-green: #52b69a;
+  --green: #2a9d8f;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -7,7 +12,6 @@ body {
 
 [class^='number-slide'],
 [class*=' number-slide'] {
-  background: grey;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,30 +20,6 @@ body {
   font-weight: 500;
   height: 200px;
   max-height: 100vh;
-}
-
-.number-slide1 {
-  background: rgb(64, 175, 255);
-}
-
-.number-slide2 {
-  background: rgb(255, 75, 64);
-}
-
-.number-slide3 {
-  background: rgb(182, 255, 64);
-}
-
-.number-slide4 {
-  background: rgb(64, 255, 242);
-}
-
-.number-slide5 {
-  background: rgb(255, 64, 156);
-}
-
-.number-slide6 {
-  background: rgb(64, 76, 255);
 }
 
 .arrow {
@@ -71,13 +51,13 @@ body {
   width: 90%;
 }
 
-.dots {
+/* .dots {
   display: flex;
   padding: 10px 0;
   justify-content: center;
-}
+} */
 
-.dot {
+/* .dot {
   border: none;
   width: 10px;
   height: 10px;
@@ -94,7 +74,7 @@ body {
 
 .dot.active {
   background: #000;
-}
+} */
 
 .keen-slider {
   transition: height 0.3s;

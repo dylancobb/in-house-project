@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './styles.css';
 import { useKeenSlider, KeenSliderPlugin } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
+import Image from 'next/image';
+import avatar1 from './avatars/avatar1.jpg';
 
 // const AdaptiveHeight: KeenSliderPlugin = (slider) => {
 //   function updateHeight() {
@@ -32,7 +34,15 @@ export default function App() {
     <>
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
-          <div className="keen-slider__slide number-slide1">1</div>
+          <div className="keen-slider__slide number-slide1">
+            <Image
+              className="rounded-full"
+              src={avatar1}
+              width={150}
+              height={150}
+              alt="Picture of the author"
+            />
+          </div>
           <div className="keen-slider__slide number-slide2">2</div>
           <div className="keen-slider__slide number-slide3">3</div>
           <div className="keen-slider__slide number-slide4">4</div>
