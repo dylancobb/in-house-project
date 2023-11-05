@@ -8,7 +8,7 @@
 // const avatar8 = require('./avatar8.jpg');
 // const avatar9 = require('./avatar9.jpg');
 
-const avatars = {
+const avatars: { [key: string]: any } = {
   avatar8: require('./avatar8.jpg'),
   avatar1: require('./avatar1.jpg'),
   avatar2: require('./avatar2.jpg'),

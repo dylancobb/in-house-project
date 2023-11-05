@@ -5,7 +5,12 @@ import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
 import avatars from '../../../public/images/avatars/images';
 
-export default function App() {
+interface AppProps {
+  setCurrentAvatar: (avatar: any) => void;
+}
+// const avatarsData: { [key: string]: any } = avatars;
+
+export default function App({ setCurrentAvatar }: AppProps) {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
@@ -42,16 +47,19 @@ export default function App() {
           <>
             <Arrow
               left
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef.current?.prev()
-              }
+              onClick={(e: any) => {
+                e.stopPropagation() || instanceRef.current?.prev();
+                console.log(currentSlide);
+              }}
               disabled={currentSlide === 0}
             />
 
             <Arrow
-              onClick={(e: any) =>
-                e.stopPropagation() || instanceRef.current?.next()
-              }
+              onClick={(e: any) => {
+                e.stopPropagation() || instanceRef.current?.next();
+                console.log(currentSlide);
+                setCurrentAvatar(avatars[currentSlide]);
+              }}
               disabled={
                 currentSlide ===
                 instanceRef.current.track.details.slides.length - 1
