@@ -5,15 +5,6 @@ import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
 import avatars from '../../public/images/avatars/images';
 
-// const AdaptiveHeight: KeenSliderPlugin = (slider) => {
-//   function updateHeight() {
-//     slider.container.style.height =
-//       slider.slides[slider.track.details.rel].offsetHeight + 'px';
-//   }
-//   slider.on('created', updateHeight);
-//   slider.on('slideChanged', updateHeight);
-// };
-
 export default function App() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const [loaded, setLoaded] = useState(false);
@@ -69,23 +60,6 @@ export default function App() {
           </>
         )}
       </div>
-      {/* {loaded && instanceRef.current && (
-        <div className="dots">
-          {[
-            ...Array(instanceRef.current.track.details.slides.length).keys(),
-          ].map((idx) => {
-            return (
-              <button
-                key={idx}
-                onClick={() => {
-                  instanceRef.current?.moveToIdx(idx);
-                }}
-                className={'dot' + (currentSlide === idx ? ' active' : '')}
-              ></button>
-            );
-          })}
-        </div>
-      )} */}
     </>
   );
 }
