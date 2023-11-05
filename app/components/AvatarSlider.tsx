@@ -3,7 +3,7 @@ import './styles.css';
 import { useKeenSlider, KeenSliderPlugin } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
-import *  from '../../public/images/avatars/images';
+import avatars from '../../public/images/avatars/images';
 
 // const AdaptiveHeight: KeenSliderPlugin = (slider) => {
 //   function updateHeight() {
@@ -34,20 +34,18 @@ export default function App() {
     <>
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
-          <div className="keen-slider__slide number-slide1">
-            <Image
-              className="rounded-full"
-              src={avatar1}
-              width={150}
-              height={150}
-              alt="Picture of the author"
-            />
-          </div>
-          <div className="keen-slider__slide number-slide2">2</div>
-          <div className="keen-slider__slide number-slide3">3</div>
-          <div className="keen-slider__slide number-slide4">4</div>
-          <div className="keen-slider__slide number-slide5">5</div>
-          <div className="keen-slider__slide number-slide6">6</div>
+          {Object.values(avatars).map((avatar, index) => (
+            <div key={index} className="keen-slider__slide number-slide">
+              <Image
+                className="rounded-full"
+                src={avatar}
+                width={150}
+                height={150}
+                alt={avatar}
+                priority={true}
+              />
+            </div>
+          ))}
         </div>
         {loaded && instanceRef.current && (
           <>
