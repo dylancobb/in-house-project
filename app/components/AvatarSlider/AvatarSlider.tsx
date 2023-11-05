@@ -3,7 +3,7 @@ import './styles.css';
 import { useKeenSlider, KeenSliderPlugin } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
-import avatars from '../../public/images/avatars/images';
+import avatars from '../../../public/images/avatars/images';
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
