@@ -3,7 +3,7 @@ import './styles.css';
 import { useKeenSlider, KeenSliderPlugin } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
-import avatar1 from './avatars/avatar1.jpg';
+import *  from '../../public/images/avatars/images';
 
 // const AdaptiveHeight: KeenSliderPlugin = (slider) => {
 //   function updateHeight() {
