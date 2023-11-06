@@ -2,16 +2,15 @@ import React from 'react';
 import Image from 'next/image';
 import icon from './arrowBtn.svg';
 import { useRouter } from 'next/navigation';
-
+import getAvatarUrl from '@/app/utilities/getAvatarUrl';
 interface ButtonProps {
-  currentAvatar: string; // Define the type of currentAvatar
+  currentSlide: number;
 }
 
-const StartButton = ({ currentAvatar }: ButtonProps) => {
+const StartButton = ({ currentSlide }: ButtonProps) => {
   const router = useRouter();
   const handleClick = () => {
-    // Store data into database + more
-    router.push('/lobby');
+    console.log(getAvatarUrl(currentSlide));
   };
   return (
     <button
