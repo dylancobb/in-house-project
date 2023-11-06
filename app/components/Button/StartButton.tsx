@@ -3,7 +3,7 @@ import Image from 'next/image';
 import icon from './arrowBtn.svg';
 import getAvatarUrl from '@/app/utilities/getAvatarUrl';
 interface ButtonProps {
-  currentSlide: number; // Define the type of currentAvatar
+  currentSlide: number;
 }
 
 const StartButton = ({ currentSlide }: ButtonProps) => {

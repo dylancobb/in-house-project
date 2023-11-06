@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between py-10">
-      <AvatarSlider currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
+      <AvatarSlider setCurrentSlide={setCurrentSlide} />
       <Input />
       <StartButton currentSlide={currentSlide} />
     </main>

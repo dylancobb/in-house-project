@@ -6,15 +6,10 @@ import Image from 'next/image';
 import avatars from '../../../public/images/avatars/images';
 
 interface AppProps {
-  currentSlide: number;
   setCurrentSlide: (currentSlide: number) => void;
 }
-// const avatarsData: { [key: string]: any } = avatars;
 
-export default function App({
-  currentSlide,
-  setCurrentSlide
-}: AppProps) {
+export default function App({ setCurrentSlide }: AppProps) {
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
@@ -37,7 +32,7 @@ export default function App({
               src={avatar}
               width={150}
               height={150}
-              alt={avatar}
+              alt="avatar"
               priority={true}
             />
           </div>
