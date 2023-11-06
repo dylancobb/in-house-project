@@ -1,12 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import icon from './arrowBtn.svg';
+import { useRouter } from 'next/navigation';
 import getAvatarUrl from '@/app/utilities/getAvatarUrl';
 interface ButtonProps {
   currentSlide: number;
 }
 
 const StartButton = ({ currentSlide }: ButtonProps) => {
+  const router = useRouter();
   const handleClick = () => {
     console.log(getAvatarUrl(currentSlide));
   };
