@@ -11,7 +11,7 @@ const config: Config = {
       dark_green: '#2A9D8F',
       green: '#52B69A',
       dark_blue: '#1D3557',
-      light_blue: '#1D3557',
+      light_blue: '#457B9D',
       white: '#EDF6F9',
       orange: '#FB8500',
     },
