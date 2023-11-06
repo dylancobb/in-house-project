@@ -28,6 +28,7 @@ export default function App({ setCurrentAvatar }: AppProps) {
 
   return (
     <>
+      {console.log(avatars)}
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
           {Object.values(avatars).map((avatar, index) => (
@@ -48,16 +49,16 @@ export default function App({ setCurrentAvatar }: AppProps) {
             <Arrow
               left
               onClick={(e: any) => {
-                e.stopPropagation() || instanceRef.current?.prev();
                 console.log(currentSlide);
+                e.stopPropagation() || instanceRef.current?.prev();
               }}
               disabled={currentSlide === 0}
             />
 
             <Arrow
               onClick={(e: any) => {
-                e.stopPropagation() || instanceRef.current?.next();
                 console.log(currentSlide);
+                e.stopPropagation() || instanceRef.current?.next();
                 setCurrentAvatar(avatars[currentSlide]);
               }}
               disabled={
