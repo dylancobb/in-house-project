@@ -1,14 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 import icon from './arrowBtn.svg';
+import { useRouter } from 'next/navigation';
 
 interface ButtonProps {
   currentAvatar: string; // Define the type of currentAvatar
 }
 
 const StartButton = ({ currentAvatar }: ButtonProps) => {
+  const router = useRouter();
   const handleClick = () => {
-    console.log(currentAvatar);
+    // Store data into database + more
+    router.push('/lobby');
   };
   return (
     <button
