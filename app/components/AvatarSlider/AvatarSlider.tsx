@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './styles.css';
+import './avatar-styles.css';
 import { useKeenSlider, KeenSliderPlugin } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
@@ -58,10 +58,7 @@ export default function App({ setCurrentSlide }: AppProps) {
   );
 }
 
-function Arrow(props: {
-  left?: boolean;
-  onClick: (e: any) => void;
-}) {
+function Arrow(props: { left?: boolean; onClick: (e: any) => void }) {
   return (
     <svg
       onClick={props.onClick}

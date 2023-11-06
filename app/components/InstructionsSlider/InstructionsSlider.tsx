@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './styles.css';
-import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
+import './instructions-styles.css';
+
+import { useKeenSlider } from 'keen-slider/react';
 import Image from 'next/image';
 import { icons } from '@/public/images/sliderIcons/sliderIcons';
 
@@ -28,8 +29,8 @@ export default function App() {
             <div key={element.url} className="keen-slider__slide number-slide1">
               <Image
                 src={element.url}
-                width={150}
-                height={150}
+                width={50}
+                height={50}
                 alt="avatar"
                 priority={true}
               />
