@@ -9,7 +9,7 @@ const UserProfile = () => {
   return (
     <>
       <div className="flex flex-col gap-2 ">
-        <div className="flex  justify-around items-center p-2">
+        <div className="flex justify-around items-center p-2">
           <Image
             key={1}
             src={avatar1}
