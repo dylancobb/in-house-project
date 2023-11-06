@@ -1,8 +1,9 @@
 'use client';
 
-import Button from './components/Button/Button';
+import StartButton from './components/Button/StartButton';
 import AvatarSlider from './components/AvatarSlider/AvatarSlider';
 import { useState } from 'react';
+import InviteButton from './components/Button/InviteButton';
 
 export default function Home() {
   const [currentAvatar, setCurrentAvatar] = useState('');
@@ -10,7 +11,8 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-2">
       <AvatarSlider setCurrentAvatar={setCurrentAvatar} />
-      <Button currentAvatar={currentAvatar} />
+      <StartButton currentAvatar={currentAvatar} />
+      <InviteButton />
     </main>
   );
 }

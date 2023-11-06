@@ -6,7 +6,7 @@ interface ButtonProps {
   currentAvatar: string; // Define the type of currentAvatar
 }
 
-const Button = ({ currentAvatar }: ButtonProps) => {
+const StartButton = ({ currentAvatar }: ButtonProps) => {
   const handleClick = () => {
     console.log(currentAvatar);
   };
@@ -21,4 +21,4 @@ const Button = ({ currentAvatar }: ButtonProps) => {
   );
 };
 
-export default Button;
+export default StartButton;
