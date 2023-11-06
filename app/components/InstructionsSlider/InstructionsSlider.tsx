@@ -3,6 +3,9 @@ import './styles.css';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import Image from 'next/image';
+import { icons } from '@/public/images/sliderIcons/sliderIcons';
+
+console.log(icons);
 
 export default function App() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
@@ -21,12 +24,18 @@ export default function App() {
     <>
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
-          <div className="keen-slider__slide number-slide1">1</div>
-          <div className="keen-slider__slide number-slide2">2</div>
-          <div className="keen-slider__slide number-slide3">3</div>
-          <div className="keen-slider__slide number-slide4">4</div>
-          <div className="keen-slider__slide number-slide5">5</div>
-          <div className="keen-slider__slide number-slide6">6</div>
+          {icons.map((element) => (
+            <div key={element.url} className="keen-slider__slide number-slide1">
+              <Image
+                src={element.url}
+                width={150}
+                height={150}
+                alt="avatar"
+                priority={true}
+              />
+              <p>{element.message}</p>
+            </div>
+          ))}
         </div>
         {loaded && instanceRef.current && (
           <>
