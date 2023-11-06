@@ -10,10 +10,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-p {
-  text-align: center;
-}
-
 [class^='number-slide'],
 [class*=' number-slide'] {
   display: flex;
