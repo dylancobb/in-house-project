@@ -2,6 +2,7 @@
 
 import StartButton from './components/Button/StartButton';
 import AvatarSlider from './components/AvatarSlider/AvatarSlider';
+import Input from './components/Input';
 import { useState } from 'react';
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-2">
       <AvatarSlider setCurrentAvatar={setCurrentAvatar} />
+      <Input />
       <StartButton currentAvatar={currentAvatar} />
     </main>
   );
