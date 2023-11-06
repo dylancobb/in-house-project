@@ -7,14 +7,14 @@ import Input from './components/Input';
 import { useState } from 'react';
 
 export default function Home() {
-  const [currentAvatar, setCurrentAvatar] = useState('');
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-2">
+    <main className="flex min-h-screen flex-col items-center justify-between py-10">
       <InstructionsSlider />
-      <AvatarSlider setCurrentAvatar={setCurrentAvatar} />
+      <AvatarSlider setCurrentSlide={setCurrentSlide} />
       <Input />
-      <StartButton currentAvatar={currentAvatar} />
+      <StartButton currentSlide={currentSlide} />
     </main>
   );
 }
