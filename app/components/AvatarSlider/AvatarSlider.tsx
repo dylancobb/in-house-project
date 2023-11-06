@@ -6,12 +6,15 @@ import Image from 'next/image';
 import avatars from '../../../public/images/avatars/images';
 
 interface AppProps {
-  setCurrentAvatar: (avatar: any) => void;
+  currentSlide: number;
+  setCurrentSlide: (currentSlide: number) => void;
 }
 // const avatarsData: { [key: string]: any } = avatars;
 
-export default function App({ setCurrentAvatar }: AppProps) {
-  const [currentSlide, setCurrentSlide] = React.useState(0);
+export default function App({
+  currentSlide,
+  setCurrentSlide
+}: AppProps) {
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
     {
@@ -28,7 +31,6 @@ export default function App({ setCurrentAvatar }: AppProps) {
 
   return (
     <>
-      {console.log(avatars)}
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
           {Object.values(avatars).map((avatar, index) => (
@@ -49,7 +51,6 @@ export default function App({ setCurrentAvatar }: AppProps) {
             <Arrow
               left
               onClick={(e: any) => {
-                console.log(currentSlide);
                 e.stopPropagation() || instanceRef.current?.prev();
               }}
               disabled={currentSlide === 0}
@@ -57,9 +58,7 @@ export default function App({ setCurrentAvatar }: AppProps) {
 
             <Arrow
               onClick={(e: any) => {
-                console.log(currentSlide);
                 e.stopPropagation() || instanceRef.current?.next();
-                setCurrentAvatar(avatars[currentSlide]);
               }}
               disabled={
                 currentSlide ===
@@ -78,13 +77,12 @@ function Arrow(props: {
   left?: boolean;
   onClick: (e: any) => void;
 }) {
-  const disabeld = props.disabled ? ' arrow--disabled' : '';
+  const disabled = props.disabled ? ' arrow--disabled' : '';
   return (
     <svg
       onClick={props.onClick}
-      className={`arrow ${
-        props.left ? 'arrow--left' : 'arrow--right'
-      } ${disabeld}`}
+      className={`arrow ${props.left ? 'arrow--left' : 'arrow--right'
+        } ${disabled}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >

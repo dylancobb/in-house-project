@@ -1,14 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import icon from './arrowBtn.svg';
-
+import getAvatarUrl from '@/app/utilities/getAvatarUrl';
 interface ButtonProps {
-  currentAvatar: string; // Define the type of currentAvatar
+  currentSlide: number; // Define the type of currentAvatar
 }
 
-const StartButton = ({ currentAvatar }: ButtonProps) => {
+const StartButton = ({ currentSlide }: ButtonProps) => {
   const handleClick = () => {
-    console.log(currentAvatar);
+    console.log(getAvatarUrl(currentSlide));
   };
   return (
     <button
