@@ -25,8 +25,8 @@ export default function App() {
     <>
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
-          {icons.map((element) => (
-            <div key={element.url} className="keen-slider__slide number-slide1">
+          {icons.map((element, index) => (
+            <div key={index} className="keen-slider__slide number-slide1">
               <Image
                 src={element.url}
                 width={50}
