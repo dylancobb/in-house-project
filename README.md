@@ -1,3 +1,48 @@
+````Game state sample {
+  "game_id": "12345",
+   "status": "active",
+  "current_round": 3,
+  "players": [
+    {
+      "user_id": 1,
+      "username": "Player1",
+"prompt": "boat on a beach"
+   "drawing_url": "https://example.com/drawings/123.png",
+"guess": "Superman flying"
+
+
+    },
+    {
+      "user_id": 2,
+      "username": "Player2",
+"prompt": "boat on a beach"
+   "drawing_url": "https://example.com/drawings/123.png",
+"guess": "Superman flying"
+
+
+    },
+    {
+      "user_id": 3,
+      "username": "Player1",
+"prompt": "boat on a beach"
+   "drawing_url": "https://example.com/drawings/123.png",
+"guess": "Superman flying"
+
+
+    },
+    {
+      "user_id": 4,
+      "username": "Player1",
+"prompt": "boat on a beach"
+   "drawing_url": "https://example.com/drawings/123.png",
+"guess": "Superman flying"
+
+
+    }
+  ]
+}```
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -12,7 +57,7 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
+````
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
