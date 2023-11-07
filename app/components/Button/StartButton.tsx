@@ -1,17 +1,82 @@
-import React from 'react';
-import Image from 'next/image';
-import icon from './arrowBtn.svg';
-import { useRouter } from 'next/navigation';
-import getAvatarUrl from '@/app/utilities/getAvatarUrl';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import icon from "./arrowBtn.svg";
+import getAvatarUrl from "@/app/utilities/getAvatarUrl";
+// import { useRouter } from "next/router";
+
 interface ButtonProps {
   currentSlide: number;
 }
-
+interface GameItem {
+  game_id: number;
+  game_state: {
+    players: any[];
+  };
+}
 const StartButton = ({ currentSlide }: ButtonProps) => {
-  const router = useRouter();
+  // const router = useRouter();
+  const [latestGameId, setLatestGameId] = useState<number | null>(null);
+
+  useEffect(() => {
+    const apiUrl =
+      "https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items?&Operation=GetMaxGameID";
+
+    fetch(apiUrl, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.length > 0) {
+          const maxGameID = Math.max(
+            ...data.map((item: GameItem) => item.game_id)
+          );
+          setLatestGameId(maxGameID);
+        } else {
+          console.error("No game data found.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching latest game ID:", error);
+      });
+  }, []);
+
   const handleClick = () => {
     console.log(getAvatarUrl(currentSlide));
+    if (latestGameId !== null) {
+      const newGameID = latestGameId + 1;
+
+      const newGame = {
+        game_id: newGameID,
+        game_state: {
+          players: [],
+        },
+      };
+
+      const apiUrl =
+        "https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items";
+
+      fetch(apiUrl, {
+        method: "POST",
+        body: JSON.stringify(newGame),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            console.log("Game ID added to DynamoDB:", newGameID);
+          } else {
+            console.error("Error adding game ID:", response.status);
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    } else {
+      console.error("Latest game ID is not available.");
+    }
   };
+
   return (
     <button
       onClick={handleClick}
