@@ -127,6 +127,54 @@ const WhiteBoard = () => {
         onMouseOut={endDrawing}
         className="border border-gray-400 bg-white"
       ></canvas>
+      <div className="flex my-4">
+        <div className="flex justify-center space-x-4">
+          {[
+            '#000000',
+            '#ff4242',
+            '#ffa142',
+            '#ffe042',
+            '#42ff42',
+            '#4281ff',
+            '#c042ff',
+          ].map((color) => (
+            <div
+              key={color}
+              className={`w-8 h-8 rounded-full cursor-pointer ${
+                currentColor === color
+                  ? `${color === 'black' ? 'bg-white' : `bg-${color}-700`}`
+                  : `${color === 'black' ? 'bg-black' : `bg-${color}-500`}`
+              }`}
+              onClick={() => changeColor(color)}
+            ></div>
+          ))}
+        </div>
+        <div className="flex-grow">
+          <input
+            type="range"
+            min="1"
+            max="10"
+            value={lineWidth}
+            onChange={(e) => changeWidth(e.target.value)}
+          />
+        </div>
+        <div className="flex justify-center my-4">
+          <button
+            className="bg-blue-500 text-white px-4 py-2 mr-2"
+            onClick={undoDrawing}
+          >
+            Undo
+          </button>
+        </div>
+        <div className="flex justify-center my-4">
+          <button
+            className="bg-red-500 text-white px-4 py-2 mr-2"
+            onClick={clearDrawing}
+          >
+            Clear
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
