@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import StartButton from './components/Button/StartButton';
-import AvatarSlider from './components/AvatarSlider/AvatarSlider';
-import InstructionsSlider from './components/InstructionsSlider/InstructionsSlider';
-import Input from './components/Input';
-import { useState } from 'react';
+import StartButton from "./components/Button/StartButton";
+import AvatarSlider from "./components/AvatarSlider/AvatarSlider";
+import InstructionsSlider from "./components/InstructionsSlider/InstructionsSlider";
+import Input from "./components/Input";
+import { useState } from "react";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);

@@ -9,7 +9,8 @@ interface ButtonProps {
 }
 interface GameItem {
   game_id: number;
-  game_state: {
+  game_state: string;
+  game_stats: {
     players: any[];
   };
 }
@@ -47,10 +48,17 @@ const StartButton = ({ currentSlide }: ButtonProps) => {
 
       const newGame = {
         game_id: newGameID,
-        game_state: {
-          players: [],
+        game_state: "Lobby",
+        game_stats: {
+          players: [
+            {
+              player_id: 1,
+              avatar: `${currentSlide}`,
+            },
+          ],
         },
       };
+      console.log(newGame);
 
       const apiUrl =
         "https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items";
