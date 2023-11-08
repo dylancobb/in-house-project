@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = () => {
+const Input = ({setStateUsername}) => {
   return (
     <>
       <div>
@@ -10,6 +10,8 @@ const Input = () => {
           type="text"
           id="userName"
           placeholder="Anonymous123"
+          onChange={(text) => setStateUsername(text.target.value)}
+
         ></input>
       </div>
     </>

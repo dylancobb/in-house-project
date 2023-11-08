@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import icon from "./arrowBtn.svg";
 import getAvatarUrl from "@/app/utilities/getAvatarUrl";
+import Link from 'next/link'
 // import { useRouter } from "next/router";
 
 interface ButtonProps {
@@ -14,10 +15,12 @@ interface GameItem {
     players: any[];
   };
 }
-const StartButton = ({ currentSlide }: ButtonProps) => {
+const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
   // const router = useRouter();
   const [latestGameId, setLatestGameId] = useState<number | null>(null);
-  let username = document.getElementById("userName")
+  // let username = document.getElementById("userName")
+
+
 
   useEffect(() => {
     const apiUrl =
@@ -42,9 +45,14 @@ const StartButton = ({ currentSlide }: ButtonProps) => {
       });
   }, []);
 
+
   const handleClick = () => {
+    
+
+    console.log(latestGameId)
     console.log(getAvatarUrl(currentSlide));
-    console.log(username.value);
+    // console.log(username.value);
+    console.log(stateUsername);
 
     if (latestGameId !== null) {
       const newGameID = latestGameId + 1;
@@ -57,7 +65,7 @@ const StartButton = ({ currentSlide }: ButtonProps) => {
             {
               player_id: 1,
               player_avatar: `${currentSlide}`,
-              player_username: username.value
+              player_username: `${stateUsername}`
             },
           ],
         },
@@ -89,7 +97,12 @@ const StartButton = ({ currentSlide }: ButtonProps) => {
     }
   };
 
+  // let link = `/${newGameID}/${username}/lobby`
+  let link = `/`
+
+
   return (
+  <Link href={link}>  
     <button
       onClick={handleClick}
       className="flex items-center gap-2 py-1 px-3 h-15 w-50 bg-green rounded-md shadow-md shadow-dark_blue"
@@ -97,6 +110,7 @@ const StartButton = ({ currentSlide }: ButtonProps) => {
       <Image src={icon} alt="arrow icon" height={40} width={40} />
       START
     </button>
+    </Link>
   );
 };
 

@@ -8,13 +8,14 @@ import { useState } from "react";
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [stateUsername, setStateUsername] = useState("");
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between py-10">
       <InstructionsSlider />
       <AvatarSlider setCurrentSlide={setCurrentSlide} />
-      <Input />
-      <StartButton currentSlide={currentSlide} />
+      <Input setStateUsername={setStateUsername}/>
+      <StartButton currentSlide={currentSlide} stateUsername={stateUsername}/>
     </main>
   );
 }
