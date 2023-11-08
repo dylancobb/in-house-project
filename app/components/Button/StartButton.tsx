@@ -17,6 +17,7 @@ interface GameItem {
 const StartButton = ({ currentSlide }: ButtonProps) => {
   // const router = useRouter();
   const [latestGameId, setLatestGameId] = useState<number | null>(null);
+  let username = document.getElementById("userName")
 
   useEffect(() => {
     const apiUrl =
@@ -43,6 +44,8 @@ const StartButton = ({ currentSlide }: ButtonProps) => {
 
   const handleClick = () => {
     console.log(getAvatarUrl(currentSlide));
+    console.log(username.value);
+
     if (latestGameId !== null) {
       const newGameID = latestGameId + 1;
 
@@ -53,7 +56,8 @@ const StartButton = ({ currentSlide }: ButtonProps) => {
           players: [
             {
               player_id: 1,
-              avatar: `${currentSlide}`,
+              player_avatar: `${currentSlide}`,
+              player_username: username.value
             },
           ],
         },
