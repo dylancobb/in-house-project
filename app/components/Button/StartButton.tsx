@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 interface ButtonProps {
   currentSlide: number;
+  stateUsername: string;
 }
 interface GameItem {
   game_id: number;

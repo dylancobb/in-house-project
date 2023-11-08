@@ -1,6 +1,9 @@
 import React from 'react';
+interface Props {
+  setStateUsername: (stateUsername: string) => void;
+}
 
-const Input = ({setStateUsername}) => {
+const Input = ({setStateUsername}: Props) => {
   return (
     <>
       <div>
