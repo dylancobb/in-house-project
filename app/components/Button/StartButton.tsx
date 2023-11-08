@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import icon from "./arrowBtn.svg";
 import getAvatarUrl from "@/app/utilities/getAvatarUrl";
-import Link from 'next/link'
-// import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface ButtonProps {
   currentSlide: number;
@@ -17,11 +16,7 @@ interface GameItem {
   };
 }
 const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
-  // const router = useRouter();
   const [latestGameId, setLatestGameId] = useState<number | null>(null);
-  // let username = document.getElementById("userName")
-
-
 
   useEffect(() => {
     const apiUrl =
@@ -46,11 +41,8 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
       });
   }, []);
 
-
   const handleClick = () => {
-    
-
-    console.log(latestGameId)
+    console.log(latestGameId);
     console.log(getAvatarUrl(currentSlide));
     // console.log(username.value);
     console.log(stateUsername);
@@ -66,7 +58,7 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
             {
               player_id: 1,
               player_avatar: `${currentSlide}`,
-              player_username: `${stateUsername}`
+              player_username: `${stateUsername}`,
             },
           ],
         },
@@ -98,19 +90,17 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
     }
   };
 
-  let link = `/${latestGameId}/${stateUsername}/lobby`
-  // let link = `/`
-
+  let link = `/${latestGameId}/${stateUsername}/lobby`;
 
   return (
-  <Link href={link}>  
-    <button
-      onClick={handleClick}
-      className="flex items-center gap-2 py-1 px-3 h-15 w-50 bg-green rounded-md shadow-md shadow-dark_blue"
-    >
-      <Image src={icon} alt="arrow icon" height={40} width={40} />
-      START
-    </button>
+    <Link href={link}>
+      <button
+        onClick={handleClick}
+        className="flex items-center gap-2 py-1 px-3 h-15 w-50 bg-green rounded-md shadow-md shadow-dark_blue"
+      >
+        <Image src={icon} alt="arrow icon" height={40} width={40} />
+        START
+      </button>
     </Link>
   );
 };
