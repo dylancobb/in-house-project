@@ -1,6 +1,16 @@
 'use client';
 import React, { useRef, useEffect, useState } from 'react';
 
+const colorsPalette = [
+  '#000000',
+  '#ff4242',
+  '#ffa142',
+  '#ffe042',
+  '#42ff42',
+  '#4281ff',
+  '#c042ff',
+];
+
 const WhiteBoard = () => {
   const canvasRef = useRef(null);
   const [context, setContext] = useState(null);
@@ -129,15 +139,7 @@ const WhiteBoard = () => {
       ></canvas>
       <div className="flex my-4">
         <div className="flex justify-center space-x-4">
-          {[
-            '#000000',
-            '#ff4242',
-            '#ffa142',
-            '#ffe042',
-            '#42ff42',
-            '#4281ff',
-            '#c042ff',
-          ].map((color) => (
+          {colorsPalette.map((color) => (
             <div
               key={color}
               className={`w-8 h-8 rounded-full cursor-pointer ${
@@ -145,6 +147,7 @@ const WhiteBoard = () => {
                   ? `${color === 'black' ? 'bg-white' : `bg-${color}-700`}`
                   : `${color === 'black' ? 'bg-black' : `bg-${color}-500`}`
               }`}
+              style={{ backgroundColor: color }}
               onClick={() => changeColor(color)}
             ></div>
           ))}
