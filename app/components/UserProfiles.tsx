@@ -23,6 +23,8 @@ console.log('Username:', username);
 const UserProfiles = () => {
 
     const [playersArray, setPlayersArray] = useState([]);
+    const [loading, setLoading] = useState(true);
+
 
 
   useEffect(() => {
@@ -49,14 +51,24 @@ const UserProfiles = () => {
       })
       .catch((error) => {
         console.error("Error fetching latest game ID:", error);
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false after fetching, regardless of success or failure
+        console.log("Data fetched, loading set to false.");
+
       });
   }, []);
 
     // Log the updated state after it has been set
     useEffect(() => {
       console.log("playersArray", playersArray);
-      console.log("avatar url", playersArray);
     }, [playersArray]);
+  
+    if (loading) {
+      console.log('loading')
+      return <p>Loading...</p>; // Display a loading message or spinner while fetching data
+      
+    } else {
   
   
   return (
@@ -66,7 +78,7 @@ const UserProfiles = () => {
           <div key={player.player_id} className="flex justify-around items-center p-2">
             <Image
               // src={`https://res.cloudinary.com/dypg1icpd/image/upload/v1699014570/samples/animals/cat.jpg`}
-              src={`/images/avatars/avatar${player.player_avatar}.jpg`}
+              src={`/images/avatars/avatar${parseInt(player.player_avatar)+1}.jpg`}
               width={40}
               height={40}
               alt="userAvatar"
@@ -77,8 +89,9 @@ const UserProfiles = () => {
         ))}
       </div>
     </>
+    
   );
-
+        }
   
   // return (
   //   <>
