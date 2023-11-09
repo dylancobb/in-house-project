@@ -1,3 +1,7 @@
+## In House Project
+
+In House Project is an exciting game that merges the creativity of Pictionary with the unpredictable twists of Chinese Whispers.
+
 ## How it Works
 
 **Prompting:** The game kicks off with the first player providing a mysterious prompt. It could be anything from a word, phrase, or even a quirky idea.
@@ -8,6 +12,32 @@
 
 **Result:** At the end of the game, everyone gets to experience the grand reveal! Witness the magic as the original prompts are unveiled alongside the beautiful artworks they inspired.
 
+## Installation
+
+Clone the project:
+
+```bash
+  git clone https://github.com/fac28/in-house-project
+```
+
+Go to the project directory:
+
+```bash
+  cd in-house-project
+```
+
+Install dependencies:
+
+```bash
+  npm install
+```
+
+Running the app:
+
+```bash
+  npm run dev
+```
+
 ## Technologies Used
 
 This project is primarily built using:
@@ -17,7 +47,22 @@ This project is primarily built using:
 - TypeScript
 - Tailwind CSS
 
-````Game state sample {
+## Project Structure
+
+The project is organized with the following directory structure:
+
+- **APP:** The main application directory containing the core logic.
+
+  - **COMPONENTS:** Houses React components used throughout the application.
+  - **UTILITIES:** Contains utility functions utilized within the project.
+  - **PAGES:** Includes route configurations for different pages in the application.
+
+- **PUBLIC:** This directory is at the same level as the APP directory and is used for storing images and icons utilized within the application.
+
+## Temporary Schema Example
+
+```
+Game state sample {
   "game_id": "12345",
    "status": "active",
   "current_round": 3,
@@ -59,27 +104,6 @@ This project is primarily built using:
 
     }
   ]
-}```
+}
 
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-````
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```
