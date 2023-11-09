@@ -43,7 +43,7 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
 
   const handleClick = () => {
     console.log(latestGameId);
-    console.log(getAvatarUrl(currentSlide));
+    // console.log(getAvatarUrl(currentSlide));
     // console.log(username.value);
     console.log(stateUsername);
 
