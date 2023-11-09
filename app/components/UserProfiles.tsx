@@ -3,6 +3,8 @@ import avatar1 from '../../public/images/avatars/avatar1.jpg';
 import avatar2 from '../../public/images/avatars/avatar2.jpg';
 import Image from 'next/image';
 
+
+
 // Get the current URL
 const currentUrl = window.location.href;
 
@@ -40,7 +42,7 @@ const UserProfiles = () => {
           console.log("Found game:", specificGame);
           // Now you can handle the specific game here
           setPlayersArray(specificGame.game_stats.players);
-          console.log("playersArray", playersArray);
+          // console.log("playersArray", playersArray);
         } else {
           console.log("Game not found");
         }
@@ -49,6 +51,13 @@ const UserProfiles = () => {
         console.error("Error fetching latest game ID:", error);
       });
   }, []);
+
+    // Log the updated state after it has been set
+    useEffect(() => {
+      console.log("playersArray", playersArray);
+      console.log("avatar url", playersArray);
+    }, [playersArray]);
+  
   
   return (
     <>
@@ -56,7 +65,8 @@ const UserProfiles = () => {
         {playersArray.map((player) => (
           <div key={player.player_id} className="flex justify-around items-center p-2">
             <Image
-              src={`https://res.cloudinary.com/dypg1icpd/image/upload/v1699014570/samples/animals/cat.jpg`}
+              // src={`https://res.cloudinary.com/dypg1icpd/image/upload/v1699014570/samples/animals/cat.jpg`}
+              src={`/images/avatars/avatar${player.player_avatar}.jpg`}
               width={40}
               height={40}
               alt="userAvatar"
