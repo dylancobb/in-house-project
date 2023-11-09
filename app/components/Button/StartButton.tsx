@@ -90,7 +90,7 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
     }
   };
 
-  let link = `/${latestGameId}/${stateUsername}/lobby`;
+  let link = `/${latestGameId + 1}/${stateUsername}/lobby`;
 
   return (
     <Link href={link}>
