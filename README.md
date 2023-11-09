@@ -107,3 +107,7 @@ Game state sample {
 }
 
 ```
+
+## Credits
+
+The project was created by <a href="https://github.com/DeepsDali">Deepa Dali</a>, <a href="https://github.com/dylancobb">Dylan Cobb</a>, <a href="https://github.com/GeorgeKlemperer">George Klemperer</a> & <a href="https://github.com/benante">Tommaso Orlandi.</a>
