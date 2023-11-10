@@ -46,6 +46,10 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
     // console.log(getAvatarUrl(currentSlide));
     // console.log(username.value);
     console.log(stateUsername);
+    const urlParams = new URLSearchParams(window.location.search);
+    const existingGameID = urlParams.get("game_id");
+
+    console.log('url game id', existingGameID)
 
     if (latestGameId !== null) {
       const newGameID = latestGameId + 1;
