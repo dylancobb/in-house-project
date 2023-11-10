@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import Input from '../components/Input';
-import SubmitButton from '../components/Button/SubmitButton';
+import Input from '../../../components/Input';
+import SubmitButton from '../../../components/Button/SubmitButton';
 
 import notepad from '@/public/images/sliderIcons/pen.svg';
 
