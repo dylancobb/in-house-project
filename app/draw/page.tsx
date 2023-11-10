@@ -3,6 +3,8 @@
 import React, { useRef } from 'react';
 import WhiteBoard from '../components/WhiteBoard';
 import SubmitButton from '../components/Button/SubmitButton';
+import uploadCanva from '../utilities/uploadCanva';
+
 const Draw = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -11,6 +13,7 @@ const Draw = () => {
       const dataUrl = canvasRef.current.toDataURL();
       console.log('Submit clicked');
       console.log(dataUrl);
+      uploadCanva(dataUrl);
     }
   };
 
