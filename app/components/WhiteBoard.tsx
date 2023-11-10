@@ -27,8 +27,10 @@ const colorsPalette = [
   '#c042ff',
 ];
 
-const WhiteBoard: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+interface WhiteBoardProps {
+  canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
+}
+const WhiteBoard: React.FC<WhiteBoardProps> = ({ canvasRef }) => {
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null);
   const [drawing, setDrawing] = useState<boolean>(false);
   const [currentColor, setCurrentColor] = useState<string>('black');

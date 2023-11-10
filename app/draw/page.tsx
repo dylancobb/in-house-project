@@ -16,7 +16,7 @@ const Draw = () => {
 
   return (
     <main className="flex min-h-screen flex-col items-center py-2">
-      <WhiteBoard />
+      <WhiteBoard canvasRef={canvasRef} />
       <SubmitButton onClick={saveCanvas} />
     </main>
   );
