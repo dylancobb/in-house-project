@@ -17,6 +17,7 @@ interface GameItem {
 }
 const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
   const [latestGameId, setLatestGameId] = useState<number | null>(null);
+  // const [buttonLink, setButtonLink] = useState('');
 
   useEffect(() => {
     const apiUrl =
@@ -46,8 +47,16 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
     // console.log(getAvatarUrl(currentSlide));
     // console.log(username.value);
     console.log(stateUsername);
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlGameID = urlParams.get("game_id");
 
-    if (latestGameId !== null) {
+    
+
+    if (urlGameID) {
+      console.log('url game id', urlGameID)
+      // setButtonLink(`/${urlGameID}/${stateUsername}/lobby`);
+      window.location.href =`/${urlGameID}/${stateUsername}/lobby`;
+    } else if (latestGameId !== null) {
       const newGameID = latestGameId + 1;
 
       const newGame = {
@@ -65,6 +74,8 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
       };
       console.log(newGame);
 
+      // setButtonLink(`/${latestGameId + 1}/${stateUsername}/lobby`);
+
       const apiUrl =
         "https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items";
 
@@ -78,6 +89,7 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
         .then((response) => {
           if (response.ok) {
             console.log("Game ID added to DynamoDB:", newGameID);
+            window.location.href =`/${latestGameId + 1}/${stateUsername}/lobby`;
           } else {
             console.error("Error adding game ID:", response.status);
           }
@@ -90,10 +102,10 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
     }
   };
 
-  let link = `/${latestGameId + 1}/${stateUsername}/lobby`;
+  // let link = `/${latestGameId + 1}/${stateUsername}/lobby`;
 
   return (
-    <Link href={link}>
+    // <Link href={buttonLink}>
       <button
         onClick={handleClick}
         className="flex items-center gap-2 py-1 px-3 h-15 w-50 bg-green rounded-md shadow-md shadow-dark_blue"
@@ -101,7 +113,7 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
         <Image src={icon} alt="arrow icon" height={40} width={40} />
         START
       </button>
-    </Link>
+     // </Link> 
   );
 };
 
