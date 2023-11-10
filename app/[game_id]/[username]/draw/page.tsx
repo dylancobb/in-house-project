@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useRef } from 'react';
-import WhiteBoard from '../components/WhiteBoard';
-import SubmitButton from '../components/Button/SubmitButton';
-import uploadCanva from '../utilities/uploadCanva';
+import WhiteBoard from '../../../components/WhiteBoard';
+import SubmitButton from '../../../components/Button/SubmitButton';
+import uploadCanva from '../../../utilities/uploadCanva';
 
 const Draw = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
