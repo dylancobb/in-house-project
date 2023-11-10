@@ -145,6 +145,7 @@ const WhiteBoard = () => {
                   ? `${color === 'black' ? 'bg-white' : `bg-${color}-700`}`
                   : `${color === 'black' ? 'bg-black' : `bg-${color}-500`}`
               }`}
+              style={{ backgroundColor: color }}
               onClick={() => changeColor(color)}
             ></div>
           ))}
