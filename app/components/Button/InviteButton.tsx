@@ -10,7 +10,7 @@ const InviteButton = () => {
   const urlParts = currentUrl.split('/');
 
   // Extract the values of game_id and username
-  const extractedGameId = parseInt(urlParts[3]);
+  const extractedGameId = urlParts[3];
 
   const handleClick = async () => {
     console.log('Clicked!');
