@@ -9,10 +9,9 @@ export default function uploadCanva(imageUrl: string): Promise<string> {
     
     // Cloudinary upload URL
     const cloudinaryUploadURL: string =
-    "https://api.cloudinary.com/v1_1/theartofstarkness/upload";
+    "https://api.cloudinary.com/v1_1/dypg1icpd/upload";
     
 
-    // DO WE NEED TO STORE THIS INTO ENV FILE?
     // Specify your Cloudinary upload preset
     const uploadPreset: string = "r5a22ziq"; // Replace with your actual upload preset
 
