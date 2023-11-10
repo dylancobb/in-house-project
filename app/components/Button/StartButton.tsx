@@ -43,7 +43,7 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
 
   const handleClick = () => {
     console.log(latestGameId);
-    console.log(getAvatarUrl(currentSlide));
+    // console.log(getAvatarUrl(currentSlide));
     // console.log(username.value);
     console.log(stateUsername);
 
@@ -90,7 +90,7 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
     }
   };
 
-  let link = `/${latestGameId}/${stateUsername}/lobby`;
+  let link = `/${latestGameId + 1}/${stateUsername}/lobby`;
 
   return (
     <Link href={link}>
