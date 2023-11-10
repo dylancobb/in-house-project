@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import avatar1 from '../../public/images/avatars/avatar1.jpg';
-import avatar2 from '../../public/images/avatars/avatar2.jpg';
 import Image from 'next/image';
 
 
