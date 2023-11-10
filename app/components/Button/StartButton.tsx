@@ -2,19 +2,20 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import icon from "./arrowBtn.svg";
 import getAvatarUrl from "@/app/utilities/getAvatarUrl";
-// import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface ButtonProps {
   currentSlide: number;
+  stateUsername: string;
 }
 interface GameItem {
   game_id: number;
-  game_state: {
+  game_state: string;
+  game_stats: {
     players: any[];
   };
 }
-const StartButton = ({ currentSlide }: ButtonProps) => {
-  // const router = useRouter();
+const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
   const [latestGameId, setLatestGameId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -41,16 +42,28 @@ const StartButton = ({ currentSlide }: ButtonProps) => {
   }, []);
 
   const handleClick = () => {
+    console.log(latestGameId);
     console.log(getAvatarUrl(currentSlide));
+    // console.log(username.value);
+    console.log(stateUsername);
+
     if (latestGameId !== null) {
       const newGameID = latestGameId + 1;
 
       const newGame = {
         game_id: newGameID,
-        game_state: {
-          players: [],
+        game_state: "Lobby",
+        game_stats: {
+          players: [
+            {
+              player_id: 1,
+              player_avatar: `${currentSlide}`,
+              player_username: `${stateUsername}`,
+            },
+          ],
         },
       };
+      console.log(newGame);
 
       const apiUrl =
         "https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items";
@@ -77,14 +90,18 @@ const StartButton = ({ currentSlide }: ButtonProps) => {
     }
   };
 
+  let link = `/${latestGameId}/${stateUsername}/lobby`;
+
   return (
-    <button
-      onClick={handleClick}
-      className="flex items-center gap-2 py-1 px-3 h-15 w-50 bg-green rounded-md shadow-md shadow-dark_blue"
-    >
-      <Image src={icon} alt="arrow icon" height={40} width={40} />
-      START
-    </button>
+    <Link href={link}>
+      <button
+        onClick={handleClick}
+        className="flex items-center gap-2 py-1 px-3 h-15 w-50 bg-green rounded-md shadow-md shadow-dark_blue"
+      >
+        <Image src={icon} alt="arrow icon" height={40} width={40} />
+        START
+      </button>
+    </Link>
   );
 };
 

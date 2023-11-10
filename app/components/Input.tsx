@@ -1,6 +1,9 @@
 import React from 'react';
+interface Props {
+  setStateUsername: (stateUsername: string) => void;
+}
 
-const Input = () => {
+const Input = ({setStateUsername}: Props) => {
   return (
     <>
       <div>
@@ -10,6 +13,8 @@ const Input = () => {
           type="text"
           id="userName"
           placeholder="Anonymous123"
+          onChange={(text) => setStateUsername(text.target.value)}
+
         ></input>
       </div>
     </>

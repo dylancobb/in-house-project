@@ -1,6 +1,6 @@
 import React from 'react';
-import InviteButton from '../components/Button/InviteButton';
-import UserProfile from '../components/UserProfile';
+import InviteButton from '../../../components/Button/InviteButton';
+import UserProfile from '../../../components/UserProfile';
 
 export default function lobby() {
   return (
