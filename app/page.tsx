@@ -1,6 +1,6 @@
 "use client";
 
-import StartButton from "./components/Button/StartButton";
+import HomeStartButton from "./components/Button/HomeStartButton";
 import AvatarSlider from "./components/AvatarSlider/AvatarSlider";
 import InstructionsSlider from "./components/InstructionsSlider/InstructionsSlider";
 import Input from "./components/Input";
@@ -15,7 +15,7 @@ export default function Home() {
       <InstructionsSlider />
       <AvatarSlider setCurrentSlide={setCurrentSlide} />
       <Input setStateUsername={setStateUsername}/>
-      <StartButton currentSlide={currentSlide} stateUsername={stateUsername}/>
+      <HomeStartButton currentSlide={currentSlide} stateUsername={stateUsername} game_id = {game_id}/>
     </main>
   );
 }

@@ -4,8 +4,6 @@ import Image from 'next/image';
 const UserProfiles = () => {
   const [playersArray, setPlayersArray] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [gameId, setGameId] = useState(null);
-  const [username, setUsername] = useState(null);
 
   useEffect(() => {
     // Get the current URL
@@ -13,17 +11,12 @@ const UserProfiles = () => {
 
     // Split the URL by "/"
     const urlParts = currentUrl.split('/');
-
     // Extract the values of game_id and username
-    const extractedGameId = parseInt(urlParts[3]);
-    const extractedUsername = urlParts[4];
-
+    const game_id = urlParts[3];
+    const username = urlParts[4];
     // Now you can use gameId and username in your code
-    console.log('Game ID:', extractedGameId);
-    console.log('Username:', extractedUsername);
-
-    setGameId(extractedGameId);
-    setUsername(extractedUsername);
+    console.log('Game ID:', game_id);
+    console.log('Username:', username);
 
     const apiUrl = "https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items";
 
@@ -34,7 +27,7 @@ const UserProfiles = () => {
       .then((response) => response.json())
       .then((data) => {
         // Find the game with the specified ID
-        const specificGame = data.find((game) => game.game_id === extractedGameId);
+        const specificGame = data.find((game) => game.game_id === game_id);
 
         if (specificGame) {
           console.log("Found game:", specificGame);
@@ -53,13 +46,7 @@ const UserProfiles = () => {
       });
   }, []); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
 
-  // Log the updated state after it has been set
-  useEffect(() => {
-    console.log("playersArray", playersArray);
-  }, [playersArray, loading]);
-
   if (loading) {
-    console.log('loading');
     return <p>Loading...</p>; // Display a loading message or spinner while fetching data
   } else {
     return (
