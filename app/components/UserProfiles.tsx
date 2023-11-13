@@ -2,60 +2,50 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 interface UserProfilesProps {
-  game_id: string; // Assuming game_id is a string, update the type accordingly
+  gameItem: {
+    game_stats: {
+      players: Array<{
+        player_id: number;
+        player_avatar: string;
+        player_username: string;
+        // Add other player properties if needed
+      }>;
+    };
+  };
 }
 
-const UserProfiles: React.FC<UserProfilesProps> = ({ game_id }) => {
-  const [playersArray, setPlayersArray] = useState([]);
+const UserProfiles: React.FC<UserProfilesProps> = ({ gameItem }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${game_id}`;
-
-    fetch(apiUrl, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data && data.game_stats && data.game_stats.players) {
-          setPlayersArray(data.game_stats.players);
-        } else {
-          console.log("Game data not found");
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching game data:", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [game_id]);
+    if (gameItem && gameItem.game_stats && gameItem.game_stats.players) {
+      setLoading(false);
+    }
+  }, [gameItem]);
 
   if (loading) {
     return <p>Loading...</p>;
   } else {
     return (
-      <>
-        <div className="flex flex-col gap-2">
-          {playersArray.map((player) => (
-            <div
-              key={player.player_id}
-              className="flex justify-around items-center p-2"
-            >
-              <Image
-                src={`/images/avatars/avatar${
-                  parseInt(player.player_avatar) + 1
-                }.jpg`}
-                width={40}
-                height={40}
-                alt="userAvatar"
-                priority={true}
-              />
-              <p>{player.player_username}</p>
-            </div>
-          ))}
-        </div>
-      </>
+      <div className="flex flex-col gap-2">
+        {gameItem.game_stats.players.map((player) => (
+          <div
+            key={player.player_id}
+            className="flex justify-around items-center p-2"
+          >
+            <Image
+              src={`/images/avatars/avatar${
+                parseInt(player.player_avatar) + 1
+              }.jpg`}
+              width={40}
+              height={40}
+              alt="userAvatar"
+              priority={true}
+            />
+            <p>{player.player_username}</p>
+          </div>
+        ))}
+      </div>
     );
   }
 };
