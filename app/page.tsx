@@ -15,7 +15,7 @@ export default function Home() {
       <InstructionsSlider />
       <AvatarSlider setCurrentSlide={setCurrentSlide} />
       <Input setStateUsername={setStateUsername}/>
-      <HomeStartButton currentSlide={currentSlide} stateUsername={stateUsername} game_id = {game_id}/>
+      <HomeStartButton currentSlide={currentSlide} stateUsername={stateUsername} />
     </main>
   );
 }
