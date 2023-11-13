@@ -1,61 +1,51 @@
 import React, { useEffect, useState } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
-const UserProfiles = () => {
+interface UserProfilesProps {
+  game_id: string; // Assuming game_id is a string, update the type accordingly
+}
+
+const UserProfiles: React.FC<UserProfilesProps> = ({ game_id }) => {
   const [playersArray, setPlayersArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Get the current URL
-    const currentUrl = window.location.href;
+    const apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${game_id}`;
 
-    // Split the URL by "/"
-    const urlParts = currentUrl.split('/');
-    // Extract the values of game_id and username
-    const game_id = urlParts[3];
-    const username = urlParts[4];
-    // Now you can use gameId and username in your code
-    console.log('Game ID:', game_id);
-    console.log('Username:', username);
-
-    const apiUrl = "https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items";
-
-    // Fetch the data when the component is rendered
     fetch(apiUrl, {
       method: "GET",
     })
       .then((response) => response.json())
       .then((data) => {
-        // Find the game with the specified ID
-        const specificGame = data.find((game) => game.game_id === game_id);
-
-        if (specificGame) {
-          console.log("Found game:", specificGame);
-          // Now you can handle the specific game here
-          setPlayersArray(specificGame.game_stats.players);
+        if (data && data.game_stats && data.game_stats.players) {
+          setPlayersArray(data.game_stats.players);
         } else {
-          console.log("Game not found");
+          console.log("Game data not found");
         }
       })
       .catch((error) => {
-        console.error("Error fetching latest game ID:", error);
+        console.error("Error fetching game data:", error);
       })
       .finally(() => {
-        setLoading(false); // Set loading to false after fetching, regardless of success or failure
-        console.log("Data fetched, loading set to false.");
+        setLoading(false);
       });
-  }, []); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
+  }, [game_id]);
 
   if (loading) {
-    return <p>Loading...</p>; // Display a loading message or spinner while fetching data
+    return <p>Loading...</p>;
   } else {
     return (
       <>
-        <div className="flex flex-col gap-2 ">
+        <div className="flex flex-col gap-2">
           {playersArray.map((player) => (
-            <div key={player.player_id} className="flex justify-around items-center p-2">
+            <div
+              key={player.player_id}
+              className="flex justify-around items-center p-2"
+            >
               <Image
-                src={`/images/avatars/avatar${parseInt(player.player_avatar) + 1}.jpg`}
+                src={`/images/avatars/avatar${
+                  parseInt(player.player_avatar) + 1
+                }.jpg`}
                 width={40}
                 height={40}
                 alt="userAvatar"

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import icon from './link.svg';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import icon from "./link.svg";
 
 const InviteButton = () => {
-  const [extractedGameId, setExtractedGameId] = useState('');
+  const [extractedGameId, setExtractedGameId] = useState("");
   const [urlParts, setUrlParts] = useState([]);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const InviteButton = () => {
     const currentUrl = window.location.href;
 
     // Split the URL by "/"
-    const parts = currentUrl.split('/');
+    const parts = currentUrl.split("/");
 
     // Extract the values of game_id and username
     setExtractedGameId(parts[3]);
@@ -19,16 +19,16 @@ const InviteButton = () => {
   }, []); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
 
   const handleClick = async () => {
-    console.log('Clicked!');
+    console.log("Clicked!");
     console.log(extractedGameId);
-    let gameIdUrl = `${urlParts[0]}${urlParts[1]}${urlParts[2]}?game_id=${extractedGameId}`
+    let gameIdUrl = `${urlParts[0]}${urlParts[1]}${urlParts[2]}?game_id=${extractedGameId}`;
     console.log(gameIdUrl);
 
     try {
       await navigator.clipboard.writeText(gameIdUrl);
-      console.log('Game ID URL copied to clipboard:', gameIdUrl);
+      console.log("Game ID URL copied to clipboard:", gameIdUrl);
     } catch (err) {
-      console.error('Unable to copy to clipboard:', err);
+      console.error("Unable to copy to clipboard:", err);
     }
   };
 
