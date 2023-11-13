@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import UserProfiles from "../../../components/UserProfiles";
@@ -14,8 +16,8 @@ interface GameItem {
 
 export default function Lobby() {
   const pathName = usePathname().split("/");
-  const usernameInPath = pathName[4];
-  const game_id = pathName[3];
+  const usernameInPath = pathName[2];
+  const game_id = pathName[1];
 
   const [gameItem, setGameItem] = useState<any | null>(null);
   const [canClick, setCanClick] = useState(false);
@@ -39,7 +41,7 @@ export default function Lobby() {
               // Determine if the player can click the button
               setCanClick(
                 data.game_stats.players.length > 2 &&
-                  data.game_stats.players[0].player_username === usernameInPath
+                data.game_stats.players[0].player_username === usernameInPath
               );
             }
           } else {
@@ -52,14 +54,16 @@ export default function Lobby() {
     };
 
     fetchData();
-  }, [game_id]);
+  }, []);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between py-10">
       <h1>Lobby</h1>
       <UserProfiles gameItem={gameItem} />
-      <InviteButton />
-      <LobbyStartButton canClick={canClick} />
+      <div className="flex flex-col space-y-3">
+        <InviteButton />
+        <LobbyStartButton canClick={canClick} />
+      </div>
     </main>
   );
 }
