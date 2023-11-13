@@ -91,7 +91,7 @@ export default function Prompt() {
             <SubmitButton onClick={savePrompt} />
           </>
         )}
-        {roundOver ? <a href='/${urlGameID}/${urlUsername}/draw'>Next round!</a>:''}
+{roundOver ? <a href={`/${urlGameID}/${urlUsername}/draw`}>Next round!</a> : ''}
       </div>
     </main>
   );
