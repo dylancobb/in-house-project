@@ -3,8 +3,8 @@ import Image from "next/image";
 import icon from "./link.svg";
 
 const InviteButton = () => {
-  const [extractedGameId, setExtractedGameId] = useState("");
-  const [urlParts, setUrlParts] = useState([]);
+  const [extractedGameId, setExtractedGameId] = useState('');
+  const [urlParts, setUrlParts] = useState<string[]>([]);
 
   useEffect(() => {
     // Get the current URL
