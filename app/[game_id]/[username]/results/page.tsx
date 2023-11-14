@@ -1,17 +1,21 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
 
-const Results = () => {
-  const [fetchData, setFetchData] = useState(null)
+interface Player {
+  player_id: number
+  player_username: string
+  player_avatar: string
+  // Add more properties as needed
+}
+
+const Results: React.FC = () => {
+  const [players, setPlayersData] = useState<Player[] | null>(null)
 
   useEffect(() => {
-    // Use window.location inside useEffect to ensure it's executed on the client side
     const currentUrl = window.location.href
-
-    // Split the URL by "/"
     const urlParts = currentUrl.split('/')
-    // Extract the values of game_id and username
     const extractedGameId = parseInt(urlParts[3])
     console.log(
       'Make sure it s the right Id number from url: ' + extractedGameId
@@ -25,9 +29,7 @@ const Results = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          setFetchData(data)
-          console.log(data)
-          console.log(fetchData)
+          setPlayersData(data.game_stats.players)
         } else {
           console.error('No game data found.')
         }
@@ -37,13 +39,29 @@ const Results = () => {
       })
   }, [])
 
-  useEffect(() => {
-    console.log('Updated fetchData:', fetchData)
-  }, [fetchData]) // The empty dependency array ensures that this useEffect runs only once, similar to componentDidMount
-
   return (
     <main className='flex min-h-screen flex-col items-center justify-between py-10'>
-      <div></div>
+      <div>
+        {players ? (
+          players.map((player) => (
+            <div key={player.player_id}>
+              <div>
+                <p>Username: {player.player_username}</p>
+                <p>Avatar: {player.player_avatar}</p>
+              </div>
+              <Image
+                className='bg-white'
+                src='https://res.cloudinary.com/dypg1icpd/image/upload/v1699965389/testImages/tgy6jcytrq1waa8gm6b3.png'
+                width={300}
+                height={200}
+                alt="player's painting"
+              />
+            </div>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
       results
     </main>
   )
