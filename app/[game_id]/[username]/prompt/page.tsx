@@ -32,7 +32,7 @@ export default function Prompt() {
       console.log('Is turn taken?', isTurnTaken)
       setTurnTaken(isTurnTaken)
 
-      const isRoundOver = await isRoundOverFunction(urlGameID, 'player_prompt')
+      const isRoundOver = await isRoundOverFunction(parseInt(urlGameID), 'player_prompt')
       console.log('Is round over?', isRoundOver)
       setRoundOver(isRoundOver)
     }

@@ -1,4 +1,4 @@
-export default async function isRoundOverFunction(gameId, round) {
+export default async function isRoundOverFunction(gameId: number, round: number) {
     try {
         let apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${gameId}`;
 
@@ -15,7 +15,7 @@ export default async function isRoundOverFunction(gameId, round) {
         const players = gameStats.players;
 
         // Check if every player has submitted a prompt
-        const isRoundOver = players.every(player => player.player_prompt.trim() !== '');
+        const isRoundOver = players.every((player: any) => player.player_prompt.trim() !== '');
 
         return isRoundOver;
     } catch (error) {
