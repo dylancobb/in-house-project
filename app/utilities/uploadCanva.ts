@@ -1,6 +1,3 @@
-
-
-
 export default function uploadCanva(imageUrl: string): Promise<string> {
 
     
