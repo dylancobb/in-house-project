@@ -121,8 +121,12 @@ const Results: React.FC = () => {
             return (
               <div key={player.player_id} className='my-8'>
                 <div>
-                  <p>Username: {player.player_username}</p>
-                  <p>Prompt: {player.player_prompt}</p>
+                  <p>
+                    {player.player_username} prompt: {player.player_prompt}
+                  </p>
+                </div>
+                <div>
+                  <p>{players[nextIndex].player_username}:</p>
                 </div>
                 <Image
                   className='bg-white'
@@ -132,7 +136,10 @@ const Results: React.FC = () => {
                   alt="player's painting"
                   priority={true}
                 />
-                <p>Guess: {players[nextNextIndex].player_guess_drawing}</p>
+                <p>
+                  {players[nextNextIndex].player_username} guess:{' '}
+                  {players[nextNextIndex].player_guess}
+                </p>
               </div>
             )
           })
