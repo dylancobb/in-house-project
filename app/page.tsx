@@ -1,6 +1,6 @@
 "use client";
 
-import HomeStartButton from "./components/Button/HomeStartButton";
+import StartButton from "./components/Button/StartButton";
 import AvatarSlider from "./components/AvatarSlider/AvatarSlider";
 import InstructionsSlider from "./components/InstructionsSlider/InstructionsSlider";
 import Input from "./components/Input";
@@ -14,8 +14,8 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between py-10">
       <InstructionsSlider />
       <AvatarSlider setCurrentSlide={setCurrentSlide} />
-      <Input setStateUsername={setStateUsername}/>
-      <HomeStartButton currentSlide={currentSlide} stateUsername={stateUsername} />
+      <Input setFunction={setStateUsername} label="username" placeholder="Anonymous123"/>
+      <StartButton currentSlide={currentSlide} stateUsername={stateUsername}/>
     </main>
   );
 }
