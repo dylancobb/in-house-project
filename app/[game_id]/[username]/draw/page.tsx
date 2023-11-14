@@ -3,7 +3,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import WhiteBoard from '../../../components/WhiteBoard';
 import SubmitButton from '../../../components/Button/SubmitButton';
-import uploadCanva from '../../../utilities/uploadCanva';
+import uploadCanvas from '../../../utilities/uploadCanvas';
 import turnTakenFunction from '@/app/utilities/turnTakenFunction';
 import isRoundOverFunction from '@/app/utilities/isRoundOver';
 import NextRoundButton from "@/app/components/Button/nextRoundButton";
@@ -59,7 +59,7 @@ useEffect(() => {
 
       try {
         // Upload the image and get the URL
-        const imageUrl = await uploadCanva(dataUrl);
+        const imageUrl = await uploadCanvas(dataUrl);
 
         // Set the drawing state with the image URL
         await setDrawing(imageUrl);
