@@ -7,7 +7,9 @@ interface Player {
   player_id: number
   player_username: string
   player_avatar: string
-  // Add more properties as needed
+  player_prompt: string
+  player_drawing: string
+  player_guess: string
 }
 
 const Results: React.FC = () => {
@@ -36,80 +38,6 @@ const Results: React.FC = () => {
       })
   }, [])
 
-  //   return (
-  //     <main className='flex min-h-screen flex-col items-center justify-between py-10'>
-  //       <div>
-  //         {players ? (
-  //           players.map((player, index) => {
-  //             if (index !== players.length - 1) {
-  //               return (
-  //                 <div key={player.player_id}>
-  //                   <div>
-  //                     <p>Username: {player.player_username}</p>
-  //                     <p>Avatar: {player.player_avatar}</p>
-  //                     <p>Prompt: {player.player_prompt}</p>
-  //                   </div>
-  //                   <Image
-  //                     className='bg-white'
-  //                     src={players[index + 1].player_drawing}
-  //                     width={200}
-  //                     height={200}
-  //                     alt="player's painting"
-  //                     priority={true}
-  //                   />
-  //                   <p>Guess: {players[index + 2].player_guess}</p>
-  //                 </div>
-  //               )
-  //             } else if (index === players.length - 2) {
-  //               {
-  //                 return (
-  //                   <div key={player.player_id}>
-  //                     <div>
-  //                       <p>Username: {player.player_username}</p>
-  //                       <p>Avatar: {player.player_avatar}</p>
-  //                       <p>Prompt: {player.player_prompt}</p>
-  //                     </div>
-  //                     <Image
-  //                       className='bg-white'
-  //                       src={players[2].player_drawing}
-  //                       width={200}
-  //                       height={200}
-  //                       alt="player's painting"
-  //                       priority={true}
-  //                     />
-  //                     <p>Guess: {players[0].player_guess}</p>
-  //                   </div>
-  //                 )
-  //               }
-  //             } else {
-  //               return (
-  //                 <div key={player.player_id}>
-  //                   <div>
-  //                     <p>Username: {player.player_username}</p>
-  //                     <p>Avatar: {player.player_avatar}</p>
-  //                     <p>Prompt: {player.player_prompt}</p>
-  //                   </div>
-  //                   <Image
-  //                     className='bg-white'
-  //                     src={players[0].player_drawing}
-  //                     width={200}
-  //                     height={200}
-  //                     alt="player's painting"
-  //                     priority={true}
-  //                   />
-  //                   <p>Guess: {players[1].player_guess}</p>
-  //                 </div>
-  //               )
-  //             }
-  //           })
-  //         ) : (
-  //           <p>Loading...</p>
-  //         )}
-  //       </div>
-  //       results
-  //     </main>
-  //   )
-  // }
   return (
     <main className='flex min-h-screen flex-col items-center justify-between py-10'>
       <div>
