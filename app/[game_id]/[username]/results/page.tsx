@@ -51,10 +51,11 @@ const Results: React.FC = () => {
               </div>
               <Image
                 className='bg-white'
-                src='https://res.cloudinary.com/dypg1icpd/image/upload/v1699965389/testImages/tgy6jcytrq1waa8gm6b3.png'
-                width={300}
+                src={player.player_drawing}
+                width={200}
                 height={200}
                 alt="player's painting"
+                priority={true}
               />
             </div>
           ))
