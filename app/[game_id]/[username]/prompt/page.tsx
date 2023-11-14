@@ -106,11 +106,6 @@ export default function Prompt() {
           </>
         )}
         {roundOver ? (
-          <a href={`/${urlGameID}/${urlUsername}/draw`}>Next round!</a>
-        ) : (
-          ''
-        )}
-        {roundOver ? (
             <NextRoundButton urlGameID={urlGameID} urlUsername={urlUsername} round="draw" />
         ) : null}
       </div>

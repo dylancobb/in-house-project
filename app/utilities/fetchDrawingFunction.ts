@@ -1,4 +1,4 @@
-export default async function fetchPromptFunction(gameId, username) {
+export default async function fetchDrawingFunction(gameId, username) {
     try {
         let apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${gameId}`;
 
@@ -20,9 +20,17 @@ export default async function fetchPromptFunction(gameId, username) {
         //Determine players in game
         let numberOfPlayers = players.length
 
-        let promptPlayersId = (playerId - 1 === 0) ? parseInt(numberOfPlayers) : playerId - 1
+        let promptPlayersId;
 
-        let drawingPrompt = players.find((player) => player.player_id === promptPlayersId).player_prompt
+        if (playerId === 1) {
+            promptPlayersId = parseInt(numberOfPlayers) - 1;
+        } else if (playerId === 2) {
+            promptPlayersId = parseInt(numberOfPlayers);
+        } else {
+            promptPlayersId = playerId - 2;
+        }
+
+        let drawingPrompt = players.find((player) => player.player_id === promptPlayersId).player_drawing
 
         return drawingPrompt;
     } catch (error) {

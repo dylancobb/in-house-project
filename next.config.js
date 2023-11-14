@@ -14,4 +14,7 @@ module.exports = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
 }
