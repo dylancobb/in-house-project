@@ -1,4 +1,4 @@
-export default async function isRoundOverFunction(gameId, round) {
+export default async function isRoundOverFunction(gameId: number, round: number) {
     try {
         let apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${gameId}`;
 
