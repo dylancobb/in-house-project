@@ -19,7 +19,7 @@ export default function Prompt() {
   console.log(urlUsername)
 
   const [prompt, setPrompt] = useState('')
-  const [turnTaken, setTurnTaken] = useState('')
+  const [turnTaken, setTurnTaken] = useState(false)
   const [roundOver, setRoundOver] = useState('')
 
   useEffect(() => {
@@ -115,7 +115,6 @@ export default function Prompt() {
         ) : null}
       </div>
     </main>
-  )
   );
   
 }
