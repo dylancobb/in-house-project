@@ -1,7 +1,4 @@
-
-
-
-export default function uploadCanva(imageUrl: string): Promise<string> {
+export default function uploadCanvas(imageUrl: string): Promise<string> {
 
     
     // Define the image URL you want to upload
