@@ -14,8 +14,8 @@ export default async function isRoundOverFunction(gameId, round) {
         // Access the 'players' property of 'game_stats'
         const players = gameStats.players;
 
-        // Check if every player has submitted a prompt
-        const isRoundOver = players.every(player => player.player_prompt.trim() !== '');
+        // Check if every player has submitted for that round
+        const isRoundOver = players.every(player => player[round].trim() !== '');
 
         return isRoundOver;
     } catch (error) {

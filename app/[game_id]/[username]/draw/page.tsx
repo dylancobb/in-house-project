@@ -1,9 +1,13 @@
 'use client'
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import WhiteBoard from '../../../components/WhiteBoard';
 import SubmitButton from '../../../components/Button/SubmitButton';
 import uploadCanva from '../../../utilities/uploadCanva';
+import turnTakenFunction from '@/app/utilities/turnTakenFunction';
+import isRoundOverFunction from '@/app/utilities/isRoundOver';
+import NextRoundButton from "@/app/components/Button/nextRoundButton";
+
 
 const Draw = () => {
   const currentUrl = window.location.href;
@@ -15,10 +19,24 @@ const Draw = () => {
   console.log(urlUsername);
 
   const [drawing, setDrawing] = useState("");
-  const [turnTaken, setTurnTaken] = useState("");
+  const [turnTaken, setTurnTaken] = useState(false);
   const [roundOver, setRoundOver] = useState("");
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+        const isTurnTaken = await turnTakenFunction(urlGameID, urlUsername, "player_drawing");
+        console.log("Is turn taken?", isTurnTaken);
+        setTurnTaken(isTurnTaken);
+
+        const isRoundOver = await isRoundOverFunction(urlGameID, "player_drawing");
+        console.log("Is round over?", isRoundOver);
+        setRoundOver(isRoundOver);
+    };
+
+    fetchData();
+}, [urlGameID, urlUsername]);
 
   const saveCanvas = async () => {
     if (canvasRef.current) {
@@ -82,8 +100,17 @@ const Draw = () => {
 
   return (
     <main className="flex min-h-screen flex-col items-center py-2">
+      {turnTaken ? (
+          <p>Please wait for all players to finish the round...</p>
+        ) : (
+        <>
       <WhiteBoard canvasRef={canvasRef} />
       <SubmitButton onClick={saveCanvas} />
+      </>
+        )}
+        {roundOver ? (
+            <NextRoundButton urlGameID={urlGameID} urlUsername={urlUsername} round="guess" />
+        ) : null}
     </main>
   );
 };

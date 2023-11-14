@@ -14,10 +14,11 @@ export default async function turnTakenFunction(gameId, username, round) {
         // Find the player with the given 'username'
         const currentPlayer = players.find((player) => player.player_username === username);
 
-        // Check if the 'player_prompt' for the current player is empty
-        const isPlayerPromptNotEmpty = currentPlayer && currentPlayer.player_prompt.trim() !== '';
+        
+        // Check if the property with the name stored in 'round' for the current player is not empty
+        const isPropertyNotEmpty = currentPlayer && currentPlayer[round].trim() !== '';
 
-        return isPlayerPromptNotEmpty;
+        return isPropertyNotEmpty;
     } catch (error) {
         // Handle errors here
         console.error("Error fetching data:", error);
