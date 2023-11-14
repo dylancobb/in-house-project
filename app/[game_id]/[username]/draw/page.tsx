@@ -7,6 +7,7 @@ import uploadCanva from '../../../utilities/uploadCanva';
 import turnTakenFunction from '@/app/utilities/turnTakenFunction';
 import isRoundOverFunction from '@/app/utilities/isRoundOver';
 import NextRoundButton from "@/app/components/Button/nextRoundButton";
+import fetchPromptFunction from '@/app/utilities/fetchPromptFunction';
 
 
 const Draw = () => {
@@ -21,6 +22,8 @@ const Draw = () => {
   const [drawing, setDrawing] = useState("");
   const [turnTaken, setTurnTaken] = useState(false);
   const [roundOver, setRoundOver] = useState("");
+  const [drawingPrompt, setDrawingPrompt] = useState("Prompt loading...");
+
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -37,6 +40,16 @@ const Draw = () => {
 
     fetchData();
 }, [urlGameID, urlUsername]);
+
+useEffect(() => {
+  const fetchPrompt = async () => {
+   const fetchedPrompt = await fetchPromptFunction(urlGameID, urlUsername)
+   console.log("Fetched prompt:", fetchedPrompt);
+   setDrawingPrompt(fetchedPrompt);
+  };
+
+  fetchPrompt();
+}, [urlGameID]);
 
   const saveCanvas = async () => {
     if (canvasRef.current) {
@@ -104,6 +117,7 @@ const Draw = () => {
           <p>Please wait for all players to finish the round...</p>
         ) : (
         <>
+        <p className="text-white text-lg">{drawingPrompt}</p>
       <WhiteBoard canvasRef={canvasRef} />
       <SubmitButton onClick={saveCanvas} />
       </>
