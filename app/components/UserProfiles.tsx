@@ -4,8 +4,8 @@ import Image from 'next/image';
 const UserProfiles = () => {
   const [playersArray, setPlayersArray] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [gameId, setGameId] = useState(null);
-  const [username, setUsername] = useState(null);
+  const [gameId, setGameId] = useState<number|null>(null);
+  const [username, setUsername] = useState<string|null>(null);
 
   useEffect(() => {
     // Get the current URL
@@ -34,7 +34,7 @@ const UserProfiles = () => {
       .then((response) => response.json())
       .then((data) => {
         // Find the game with the specified ID
-        const specificGame = data.find((game) => game.game_id === extractedGameId);
+        const specificGame = data.find((game: any) => game.game_id === extractedGameId);
 
         if (specificGame) {
           console.log("Found game:", specificGame);
@@ -65,7 +65,7 @@ const UserProfiles = () => {
     return (
       <>
         <div className="flex flex-col gap-2 ">
-          {playersArray.map((player) => (
+          {playersArray.map((player: any) => (
             <div key={player.player_id} className="flex justify-around items-center p-2">
               <Image
                 src={`/images/avatars/avatar${parseInt(player.player_avatar) + 1}.jpg`}
