@@ -1,12 +1,5 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
-import Image from 'next/image'
-import Input from '../../../components/Input'
-import SubmitButton from '../../../components/Button/SubmitButton'
-import turnTakenFunction from '@/app/utilities/turnTakenFunction'
-import isRoundOverFunction from '@/app/utilities/isRoundOver'
-import notepad from '@/public/images/sliderIcons/pen.svg'
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Input from "../../../components/Input";
