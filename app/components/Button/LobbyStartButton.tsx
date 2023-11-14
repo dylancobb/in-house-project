@@ -13,9 +13,9 @@ const LobbyStartButton: React.FC<LobbyStartButtonProps> = ({ canClick }) => {
   return (
     <button
       onClick={handleClick}
-      className={`flex items-center gap-2 py-1 px-3 h-15 w-50 ${
-        canClick ? "bg-green" : "bg-grey-300"
-      } rounded-md shadow-md shadow-dark_blue`}
+      className={`flex items-center gap-2 py-1 px-3 h-15 w-50
+      ${canClick ? "bg-green" : "bg-grey/50 text-black/50" }
+      rounded-md shadow-md shadow-dark_blue`}
       disabled={!canClick}
     >
       <Image src={icon} alt="arrow icon" height={40} width={40} />
