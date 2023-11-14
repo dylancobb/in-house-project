@@ -119,7 +119,7 @@ const Results: React.FC = () => {
             const nextNextIndex = (index + 2) % players.length
 
             return (
-              <div key={player.player_id}>
+              <div key={player.player_id} className='my-8'>
                 <div>
                   <p>Username: {player.player_username}</p>
                   <p>Prompt: {player.player_prompt}</p>
@@ -132,7 +132,7 @@ const Results: React.FC = () => {
                   alt="player's painting"
                   priority={true}
                 />
-                <p>Guess: {players[nextNextIndex].player_guess}</p>
+                <p>Guess: {players[nextNextIndex].player_guess_drawing}</p>
               </div>
             )
           })
