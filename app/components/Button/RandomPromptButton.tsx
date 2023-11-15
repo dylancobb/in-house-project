@@ -5,11 +5,15 @@ const RandomPromptButton = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('https://loripsum.net/api/1/short/plaintext');
-      const data = await response.text();
-      setRandomSentence(data);
+      const noun = await fetch('https://random-word-form.repl.co/random/noun');
+      const dataNoun = await noun.json();
+      const adjective = await fetch ('https://random-word-form.repl.co/random/adjective');
+      const dataAdjective = await adjective.json();  
+      let sentence = `a ${dataAdjective} ${dataNoun}`
+      setRandomSentence(sentence);
+      console.log(sentence); // Log the actual data
     } catch (error) {
-      console.error('Error fetching random sentence:', error.message);
+      console.error('Error fetching random sentence:', error.message, error.response);
     }
   };
 
@@ -19,10 +23,7 @@ const RandomPromptButton = () => {
   }, []); // Empty dependency array means this effect will only run once, equivalent to componentDidMount
 
   const handleClick = () => {
-    // Call the fetchData function when the button is clicked
     fetchData();
-    // You can use randomSentence here or perform any other action
-    console.log(randomSentence);
   };
 
   return (
