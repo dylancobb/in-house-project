@@ -12,18 +12,20 @@ export default function Home() {
   const [usernameValid, setUsernameValid] = useState(false);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between py-10">
+    <main className="flex min-h-screen flex-col items-center justify-between pb-10">
       <InstructionsSlider />
       <AvatarSlider setCurrentSlide={setCurrentSlide} />
-      <Input setFunction={setStateUsername} 
-      setUsernameValid={setUsernameValid}
-      label="Enter a username:" 
-      placeholder="Anonymous123" 
-      maxLength={12}
-        minLength={3}
-        pattern={/^[a-zA-Z0-9-]+$/} // Example: Alphanumeric characters only and dashes
+      <div className="flex flex-col space-y-3 items-center">
+        <Input setFunction={setStateUsername}
+          setUsernameValid={setUsernameValid}
+          label="Enter a username:"
+          placeholder="Anonymous123"
+          maxLength={12}
+          minLength={3}
+          pattern={/^[a-zA-Z0-9-]+$/} // Example: Alphanumeric characters only and dashes
         />
-      {usernameValid ? <StartButton currentSlide={currentSlide} stateUsername={stateUsername}/> : null}
+        <StartButton canClick={usernameValid} currentSlide={currentSlide} stateUsername={stateUsername} />
+      </div>
     </main>
   );
 }
