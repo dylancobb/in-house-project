@@ -8,6 +8,7 @@ import turnTakenFunction from "@/app/utilities/turnTakenFunction";
 import isRoundOverFunction from "@/app/utilities/isRoundOver";
 import notepad from "@/public/images/sliderIcons/pen.svg";
 import NextRoundButton from "@/app/components/Button/nextRoundButton";
+import RandomPromptButton from "@/app/components/Button/RandomPromptButton"
 
 export default function Prompt() {
   const currentUrl = window.location.href
@@ -103,6 +104,7 @@ export default function Prompt() {
             />
             <Input setFunction={setPrompt} label='prompt' placeholder='...' />
             <SubmitButton onClick={savePrompt} />
+            <RandomPromptButton />
           </>
         )}
         {roundOver ? (
