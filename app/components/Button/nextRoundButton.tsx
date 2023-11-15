@@ -41,7 +41,7 @@ const NextRoundButton: React.FC<Props> = ({ urlGameID, urlUsername, round }: Pro
 
   return (
     <button
-      className="flex items-center gap-2 py-1 px-3 h-15 w-50 light_blue rounded-md shadow-md bg-light_blue shadow-dark_blue"
+      className="flex items-center gap-2 py-1 px-3 h-12 w-32 light_blue rounded-md shadow-md bg-light_blue shadow-dark_blue"
       onClick={handleClick}
     >
       Next round!

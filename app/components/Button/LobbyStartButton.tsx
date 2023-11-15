@@ -50,7 +50,7 @@ const LobbyStartButton: React.FC<LobbyStartButtonProps> = ({
   return (
     <button
       onClick={handleClick}
-      className={`flex items-center gap-2 py-1 px-3 h-15 w-50
+      className={`flex items-center gap-2 py-1 px-3 h-12 w-32
       ${canClick ? "bg-green" : "bg-grey/50 text-black/50"}
       rounded-md shadow-md shadow-dark_blue`}
       disabled={!canClick}
