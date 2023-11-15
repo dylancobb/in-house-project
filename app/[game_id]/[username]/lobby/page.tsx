@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation'
 import UserProfiles from '../../../components/UserProfiles'
 import InviteButton from '../../../components/Button/InviteButton'
 import LobbyStartButton from '../../../components/Button/LobbyStartButton'
-
 interface GameItem {
   game_id: number
   game_state: string
@@ -41,7 +40,7 @@ export default function Lobby() {
               // Determine if the player can click the button
               setCanClick(
                 data.game_stats.players.length > 2 &&
-                  data.game_stats.players[0].player_username === usernameInPath
+                data.game_stats.players[0].player_username === usernameInPath
               )
             }
           } else {
@@ -56,14 +55,29 @@ export default function Lobby() {
     fetchData()
   }, [])
 
-  return (
-    <main className='flex min-h-screen flex-col items-center justify-between py-10'>
-      <h1>Lobby</h1>
-      <UserProfiles gameItem={gameItem} />
-      <div className='flex flex-col space-y-3'>
-        <InviteButton />
-        <LobbyStartButton canClick={canClick} />
-      </div>
-    </main>
-  )
+  if (!gameItem || !gameItem.game_stats) {
+    return (
+      <main className='flex min-h-screen flex-col items-center justify-between py-10'>
+        <p>Loading...</p>
+      </main>
+    )
+  } else {
+    if (gameItem.game_state === 'lobby') {
+      return (
+        <main className='flex min-h-screen flex-col items-center justify-between py-10'>
+          <h1>Lobby</h1>
+          <UserProfiles gameItem={gameItem} />
+          <div className='flex flex-col space-y-3'>
+            <InviteButton />
+            <LobbyStartButton
+              canClick={canClick}
+              urlGameID={game_id}
+              urlUsername={usernameInPath}
+              round="prompt"
+            />
+          </div>
+        </main>
+      )
+    } else {window.location.href = `/${game_id}/${usernameInPath}/${gameItem.game_state}`}
+  }
 }
