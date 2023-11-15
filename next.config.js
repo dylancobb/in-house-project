@@ -13,6 +13,9 @@ module.exports = {
     // your project has type errors.
     // !! WARN !!
     ignoreBuildErrors: true,
+    images: {
+      domains: ['res.cloudinary.com'],
+    },
   },
   images: {
     domains: ['res.cloudinary.com'],
