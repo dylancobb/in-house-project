@@ -21,3 +21,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(180deg, #1d3557 0%, #2a9d8f 100%);
 }
+
+.btn {
+  @apply flex items-center gap-2 py-1 px-3 h-14 w-36 rounded-md shadow-md shadow-dark_blue;
+}

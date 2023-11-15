@@ -158,7 +158,8 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
   return (
     <button
       onClick={handleClick}
-      className='flex items-center gap-2 py-1 px-3 h-15 w-50 bg-green rounded-md shadow-md shadow-dark_blue'
+      className='btn 
+      bg-green '
     >
       <Image src={icon} alt='arrow icon' height={40} width={40} />
       START
