@@ -2,7 +2,7 @@ import React from 'react';
 
 interface Props {
   setFunction: (value: string) => void;
-  setUsernameValid: (isValid: boolean) => void;
+  setUsernameValid?: (isValid: boolean) => void;
   label: string;
   placeholder: string;
   maxLength?: number;
