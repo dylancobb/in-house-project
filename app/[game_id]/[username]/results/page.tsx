@@ -66,6 +66,15 @@ const Results: React.FC = () => {
                   </p>
                 </div>
                 <div>
+                  <Image
+                    src={`/images/avatars/avatar${
+                      parseInt(players[nextIndex].player_avatar) + 1
+                    }.jpg`}
+                    width={40}
+                    height={40}
+                    alt='userAvatar'
+                    priority={true}
+                  />
                   <p>{players[nextIndex].player_username}:</p>
                 </div>
                 <Image
@@ -76,10 +85,22 @@ const Results: React.FC = () => {
                   alt="player's painting"
                   priority={true}
                 />
-                <p>
-                  {players[nextNextIndex].player_username} guess:{' '}
-                  {players[nextNextIndex].player_guess}
-                </p>
+                <div>
+                  <Image
+                    src={`/images/avatars/avatar${
+                      parseInt(players[nextNextIndex].player_avatar) + 1
+                    }.jpg`}
+                    width={40}
+                    height={40}
+                    alt='userAvatar'
+                    priority={true}
+                  />
+
+                  <p>
+                    {players[nextNextIndex].player_username} guess:{' '}
+                    {players[nextNextIndex].player_guess}
+                  </p>
+                </div>
               </div>
             )
           })
