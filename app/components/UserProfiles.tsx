@@ -20,7 +20,7 @@ const UserProfiles: React.FC<UserProfilesProps> = ({ gameItem }) => {
 
   return (
     <>
-      <div className='flex flex-col gap-2'>
+      <div className='flex flex-col gap-2 '>
         {players.map((player) => (
           <div
             key={player.player_id}

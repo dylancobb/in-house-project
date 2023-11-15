@@ -34,7 +34,7 @@ const InviteButton = () => {
   return (
     <>
       <p className='h-6'>{clicked ? 'Link copied to clipboard!' : ''}</p>
-      <button className='btn bg-light_blue' onClick={handleClick}>
+      <button className='btn  bg-light_blue' onClick={handleClick}>
         <Image src={icon} alt='arrow icon' height={40} width={40} />
         INVITE
       </button>
