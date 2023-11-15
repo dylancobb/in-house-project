@@ -163,7 +163,7 @@ const StartButton = ({
   return (
     <button
       onClick={handleClick}
-      className={`flex items-center gap-2 py-1 px-3 h-12 w-32
+      className={`flex items-center gap-2 py-1 px-3 h-14 w-36
       ${canClick ? 'bg-green' : 'bg-grey/50 text-black/50'}
       rounded-md shadow-md shadow-dark_blue`}
     >
