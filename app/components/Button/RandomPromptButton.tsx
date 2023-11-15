@@ -24,10 +24,6 @@ const RandomPromptButton = () => {
     return 'aeiou'.includes(firstLetter) ? 'an' : 'a';
   };
 
-//   useEffect(() => {
-//     fetchData();
-//   }, []);
-
   const handleClick = () => {
     fetchData();
   };
