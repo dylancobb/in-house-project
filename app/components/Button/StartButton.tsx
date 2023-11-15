@@ -163,8 +163,8 @@ const StartButton = ({
   return (
     <button
       onClick={handleClick}
-      className={`flex items-center gap-2 py-1 px-3 h-14 w-36
-      ${canClick ? 'bg-green' : 'bg-grey/50 text-black/50'}
+      className={`flex items-center gap-2 py-1 px-3 h-14 w-36 text-dark_blue
+      ${canClick ? 'bg-green' : 'bg-grey/50 text-dark_blue'}
       rounded-md shadow-md shadow-dark_blue`}
     >
       <Image src={icon} alt='arrow icon' height={40} width={40} />
