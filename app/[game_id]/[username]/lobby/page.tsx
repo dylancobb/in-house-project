@@ -67,7 +67,7 @@ export default function Lobby() {
         <main className='flex min-h-screen flex-col items-center justify-between py-10'>
           <h1>Lobby</h1>
           <UserProfiles gameItem={gameItem} />
-          <div className='flex flex-col space-y-3'>
+          <div className='flex flex-col space-y-3 items-center'>
             <InviteButton />
             <LobbyStartButton
               canClick={canClick}
