@@ -20,7 +20,7 @@ export default function Home() {
       label="Enter a username:" 
       placeholder="Anonymous123" 
       maxLength={12}
-        minLength={1}
+        minLength={3}
         pattern={/^[a-zA-Z0-9-]+$/} // Example: Alphanumeric characters only and dashes
         />
       {usernameValid ? <StartButton currentSlide={currentSlide} stateUsername={stateUsername}/> : null}
