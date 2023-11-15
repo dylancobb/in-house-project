@@ -78,7 +78,7 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
 
           const updatedGame = {
             ...data,
-            game_state: 'Lobby',
+            game_state: 'lobby',
             game_stats: {
               ...data.game_stats,
               players: updatedPlayers,
@@ -112,7 +112,7 @@ const StartButton = ({ currentSlide, stateUsername }: ButtonProps) => {
 
         const newGame = {
           game_id: newGameID,
-          game_state: 'Lobby',
+          game_state: 'lobby',
           game_stats: {
             players: [
               {
