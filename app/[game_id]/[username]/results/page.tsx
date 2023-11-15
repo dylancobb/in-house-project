@@ -38,10 +38,11 @@ const Results: React.FC = () => {
       })
   }, [])
 
-  console.log("Players array:", players)
+  console.log('Players array:', players)
 
   return (
     <main className='flex min-h-screen flex-col items-center justify-between py-10'>
+      Results
       <div>
         {players ? (
           players.map((player, index) => {
@@ -51,6 +52,15 @@ const Results: React.FC = () => {
             return (
               <div key={player.player_id} className='my-8'>
                 <div>
+                  <Image
+                    src={`/images/avatars/avatar${
+                      parseInt(player.player_avatar) + 1
+                    }.jpg`}
+                    width={40}
+                    height={40}
+                    alt='userAvatar'
+                    priority={true}
+                  />
                   <p>
                     {player.player_username} prompt: {player.player_prompt}
                   </p>
@@ -77,7 +87,6 @@ const Results: React.FC = () => {
           <p>Loading...</p>
         )}
       </div>
-      results
     </main>
   )
 }
