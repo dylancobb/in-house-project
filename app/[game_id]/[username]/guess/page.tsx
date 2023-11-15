@@ -9,7 +9,7 @@ import turnTakenFunction from "@/app/utilities/turnTakenFunction";
 import isRoundOverFunction from "@/app/utilities/isRoundOver";
 import NextRoundButton from "@/app/components/Button/nextRoundButton";
 
-export default function Prompt() {
+export default function Guess() {
     const currentUrl = window.location.href;
   const parts = currentUrl.split('/');
   let urlGameID = parts[3];
@@ -77,7 +77,7 @@ export default function Prompt() {
                   player.player_username === urlUsername
               )
       
-              // Update the "player_prompt" for the current player in memory
+              // Update the "player_guess" for the current player in memory
               currentPlayer.player_guess = guess
       
               // Update the DynamoDB entry

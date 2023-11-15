@@ -20,15 +20,7 @@ export default async function fetchDrawingFunction(gameId, username) {
         //Determine players in game
         let numberOfPlayers = players.length
 
-        let promptPlayersId;
-
-        if (playerId === 1) {
-            promptPlayersId = parseInt(numberOfPlayers) - 1;
-        } else if (playerId === 2) {
-            promptPlayersId = parseInt(numberOfPlayers);
-        } else {
-            promptPlayersId = playerId - 2;
-        }
+        let promptPlayersId = (playerId - 1 === 0) ? parseInt(numberOfPlayers) : playerId - 1
 
         let drawingPrompt = players.find((player) => player.player_id === promptPlayersId).player_drawing
 
