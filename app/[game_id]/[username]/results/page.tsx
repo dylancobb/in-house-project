@@ -51,8 +51,8 @@ const Results: React.FC = () => {
 
             return (
               <div key={player.player_id} className='my-10 flex flex-col gap-3'>
-                <h2 className='text-2xl'>Initial Prompts:</h2>
-                <div className='flex items-center mt-1 '>
+                <h2 className='text-2xl'>Prompts:</h2>
+                <div className='flex  items-center mt-1 '>
                   <Image
                     src={`/images/avatars/avatar${
                       parseInt(player.player_avatar) + 1
@@ -63,11 +63,11 @@ const Results: React.FC = () => {
                     priority={true}
                     style={{ borderRadius: '50%' }}
                   />
-                  <p className='ml-4'>
-                    {player.player_username}: {player.player_prompt}
+                  <p className='ml-4 items-center py-2 px-6 border-2 border-solid border-green rounded-md '>
+                    {player.player_prompt}
                   </p>
                 </div>
-                <div className='flex items-center mt-1'>
+                <div className='flex mt-1'>
                   <Image
                     src={`/images/avatars/avatar${
                       parseInt(players[nextIndex].player_avatar) + 1
@@ -76,7 +76,7 @@ const Results: React.FC = () => {
                     height={60}
                     alt='userAvatar'
                     priority={true}
-                    style={{ borderRadius: '50%' }}
+                    style={{ borderRadius: '50%', alignSelf: 'flex-end' }}
                   />
                   {/* <p>{players[nextIndex].player_username}:</p> */}
                 </div>
@@ -100,8 +100,7 @@ const Results: React.FC = () => {
                     style={{ borderRadius: '50%' }}
                   />
 
-                  <p className='ml-4'>
-                    {players[nextNextIndex].player_username} guess:{' '}
+                  <p className='ml-4 items-center py-2 px-6 border-2 border-solid border-green rounded-md '>
                     {players[nextNextIndex].player_guess}
                   </p>
                 </div>
