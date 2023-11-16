@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 interface Props {
-  setFunction: (value: string) => void;
-  setUsernameValid?: (isValid: boolean) => void;
-  label: string;
-  placeholder: string;
-  maxLength?: number;
-  minLength?: number;
-  pattern?: RegExp;
+  setFunction: (value: string) => void
+  setUsernameValid?: (isValid: boolean) => void
+  label: string
+  placeholder: string
+  maxLength?: number
+  minLength?: number
+  pattern?: RegExp
 }
 
 const Input = ({
@@ -20,7 +20,7 @@ const Input = ({
   pattern,
 }: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value;
+    const inputValue = event.target.value
 
     // Add your validation logic here
     if (
@@ -43,15 +43,15 @@ const Input = ({
       <div>
         <label htmlFor={label}>{label}</label>
         <input
-          className="flex justify-center p-2 rounded-md mix-blend-hard-difference border-2 border-solid border-green "
-          type="text"
+          className='flex justify-center p-2 rounded-md mix-blend-hard-difference border-2 border-solid border-green text-black '
+          type='text'
           id={label}
           placeholder={placeholder}
           onChange={handleChange}
         />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input
