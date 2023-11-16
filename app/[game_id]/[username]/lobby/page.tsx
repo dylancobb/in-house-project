@@ -40,7 +40,7 @@ export default function Lobby() {
               // Determine if the player can click the button
               setCanClick(
                 data.game_stats.players.length > 2 &&
-                data.game_stats.players[0].player_username === usernameInPath
+                  data.game_stats.players[0].player_username === usernameInPath
               )
             }
           } else {
@@ -65,7 +65,7 @@ export default function Lobby() {
     if (gameItem.game_state === 'lobby') {
       return (
         <main className='flex min-h-screen flex-col items-center justify-between py-10'>
-          <h1>Lobby</h1>
+          <h1 className='text-5xl'>Lobby</h1>
           <UserProfiles gameItem={gameItem} />
           <div className='flex flex-col space-y-3 items-center'>
             <InviteButton />
@@ -73,11 +73,13 @@ export default function Lobby() {
               canClick={canClick}
               urlGameID={game_id}
               urlUsername={usernameInPath}
-              round="prompt"
+              round='prompt'
             />
           </div>
         </main>
       )
-    } else {window.location.href = `/${game_id}/${usernameInPath}/${gameItem.game_state}`}
+    } else {
+      window.location.href = `/${game_id}/${usernameInPath}/${gameItem.game_state}`
+    }
   }
 }
