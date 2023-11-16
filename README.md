@@ -60,6 +60,10 @@ This project is primarily built using:
 
 ```
 
+## Project Design on Figma
+
+<a href="https://www.figma.com/file/Ij4Mxf1frvGbRqcXXjyWga/Gartic-Phone?type=design&node-id=0%3A1&mode=design&t=2TQZIX8NcZWNgZcc-1">Link to Figma </a>
+
 ## Lambda Function used to interact with DynamoDB database
 
 ```
