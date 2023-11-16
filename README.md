@@ -46,6 +46,7 @@ This project is primarily built using:
 - Next.js
 - TypeScript
 - Tailwind CSS
+- AWS DynamoDB
 
 ## Schema
 
@@ -58,7 +59,6 @@ This project is primarily built using:
 {"player_drawing":"","player_guess_text":"","player_id":2,"player_prompt":"","player_guess_drawing":"","player_avatar":"0","player_username":"Josh"},{"player_drawing":"","player_guess_text":"","player_id":3,"player_prompt":"","player_guess_drawing":"","player_avatar":"0","player_username":"Ben"}]}}
 
 ```
-
 
 ## Lambda Function used to interact with DynamoDB database
 
@@ -197,8 +197,8 @@ export const handler = async (event, context) => {
 };
 
 ```
-=======
 
+=======
 
 ## Credits
 

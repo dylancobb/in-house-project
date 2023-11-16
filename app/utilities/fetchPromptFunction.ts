@@ -1,6 +1,6 @@
 export default async function fetchPromptFunction(gameId, username) {
     try {
-        let apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${gameId}`;
+        let apiUrl = `https://8494ibofxk.execute-api.eu-west-2.amazonaws.com/dev/items/${gameId}`;
 
         const response = await fetch(apiUrl, {
             method: "GET",

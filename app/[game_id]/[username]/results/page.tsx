@@ -20,7 +20,7 @@ const Results: React.FC = () => {
     const urlParts = currentUrl.split('/')
     const extractedGameId = parseInt(urlParts[3])
 
-    const apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${extractedGameId}`
+    const apiUrl = `https://8494ibofxk.execute-api.eu-west-2.amazonaws.com/dev/items/${extractedGameId}`
 
     fetch(apiUrl, {
       method: 'GET',

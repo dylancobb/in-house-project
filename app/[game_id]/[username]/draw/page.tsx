@@ -80,7 +80,7 @@ const Draw = () => {
 
   const updateDrawingInDynamoDB = async (imageUrl: string) => {
     try {
-      let apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${urlGameID}`
+      let apiUrl = `https://8494ibofxk.execute-api.eu-west-2.amazonaws.com/dev/items/${urlGameID}`
 
       const response = await fetch(apiUrl, {
         method: 'GET',

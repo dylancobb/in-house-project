@@ -23,7 +23,7 @@ const StartButton = ({
 
   useEffect(() => {
     const apiUrl =
-      'https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items?&Operation=GetMaxGameID'
+      'https://8494ibofxk.execute-api.eu-west-2.amazonaws.com/dev/items?&Operation=GetMaxGameID'
 
     fetch(apiUrl, {
       method: 'GET',
@@ -53,7 +53,7 @@ const StartButton = ({
     if (urlGameID) {
       console.log('url game id', urlGameID)
 
-      const apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${urlGameID}`
+      const apiUrl = `https://8494ibofxk.execute-api.eu-west-2.amazonaws.com/dev/items/${urlGameID}`
 
       try {
         const response = await fetch(apiUrl, {
@@ -136,7 +136,7 @@ const StartButton = ({
         console.log(newGame)
 
         const apiUrl =
-          'https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items'
+          'https://8494ibofxk.execute-api.eu-west-2.amazonaws.com/dev/items'
 
         const response = await fetch(apiUrl, {
           method: 'POST',
