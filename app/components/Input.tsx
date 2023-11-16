@@ -27,16 +27,16 @@ const Input = ({
       (maxLength && inputValue.length > maxLength) ||
       (minLength && inputValue.length < minLength) ||
       (pattern && !pattern.test(inputValue))
-    ) {
-      setUsernameValid(false)
-      console.error('Invalid input!')
-      return
+          ) {
+            setUsernameValid && setUsernameValid(false)
+      console.error('Invalid input!');
+      return;
     }
 
     // Update the state if validation passes
-    setFunction(inputValue)
-    setUsernameValid(true)
-  }
+    setFunction(inputValue);
+    setUsernameValid && setUsernameValid(true)
+  };
 
   return (
     <>
