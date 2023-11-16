@@ -110,7 +110,7 @@ export default function Guess() {
           <p>Please wait for all players to finish the round...</p>
         ) : (
           <>
-            <h1>Guess!</h1>
+            <h1 className='text-5xl'>Guess!</h1>
             {!pictureLoaded ? (
               <p>Loading...</p>
             ) : (
@@ -122,7 +122,7 @@ export default function Guess() {
                   height={300}
                   style={{ backgroundColor: 'white' }}
                 />
-                <Input setFunction={setGuess} label='guess' placeholder='...' />
+                <Input setFunction={setGuess} label='' placeholder='...' />
                 <SubmitButton onClick={saveGuess} />
               </>
             )}

@@ -44,7 +44,10 @@ const NextRoundButton: React.FC<Props> = ({
   }
 
   return (
-    <button className='btn justify-center bg-light_blue' onClick={handleClick}>
+    <button
+      className='btn justify-center bg-light_blue my-7'
+      onClick={handleClick}
+    >
       NEXT ROUND!
     </button>
   )
