@@ -24,7 +24,7 @@ export default function Lobby() {
   useEffect(() => {
     const fetchData = async () => {
       if (game_id) {
-        const apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${game_id}`
+        const apiUrl = `https://8494ibofxk.execute-api.eu-west-2.amazonaws.com/dev/items/${game_id}`
 
         try {
           const response = await fetch(apiUrl, {
