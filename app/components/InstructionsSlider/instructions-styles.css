@@ -12,6 +12,7 @@
 
 p {
   text-align: center;
+  width: 200px;
 }
 
 .navigation-wrapper {
@@ -23,7 +24,7 @@ p {
   padding: 10px 0;
   justify-content: center;
   position: absolute;
-  top: 15em;
+  top: 16em;
 }
 
 .dot {
