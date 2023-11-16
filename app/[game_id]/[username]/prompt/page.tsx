@@ -91,10 +91,13 @@ export default function Prompt() {
   }
 
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between py-10'>
-      <div className='flex flex-col items-center space-y-5'>
+    <main className='flex min-h-screen flex-col items-center py-10'>
+      <h1 className='text-5xl'>Prompt</h1>
+      <div className='flex flex-col items-center my-6 space-y-5'>
         {turnTaken ? (
-          <p>Please wait for all players to finish the round...</p>
+          <h2 className='text-2xl'>
+            Please wait for all players to finish the round...
+          </h2>
         ) : (
           <>
             <p className='text-white text-xl'>Write a quirky sentence:</p>
@@ -105,7 +108,7 @@ export default function Prompt() {
               width={100}
               priority={true}
             />
-            <Input setFunction={setPrompt} label='prompt' placeholder='...' />
+            <Input setFunction={setPrompt} label='' placeholder='...' />
             <SubmitButton onClick={savePrompt} />
             <RandomPromptButton />
           </>

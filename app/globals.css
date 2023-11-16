@@ -13,9 +13,13 @@
 
 body {
   color: var(--light-grey);
-  background: linear-gradient(180deg, #1d3557 0%, #2a9d8f 100%);
+  background: linear-gradient(180deg, var(--dark_blue) 0%, var(--green) 100%);
 }
 
 .btn {
   @apply flex items-center gap-2 py-1 px-3 h-14 w-36 rounded-md shadow-md shadow-dark_blue text-dark_blue;
+}
+
+.bg-multiply {
+  @apply bg-gradient-to-b from-dark_blue to-green;
 }
