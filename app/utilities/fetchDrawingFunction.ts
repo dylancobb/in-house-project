@@ -1,4 +1,4 @@
-export default async function isRoundOverFunction(gameId: number, round: number) {
+export default async function fetchDrawingFunction(gameId, username) {
     try {
         let apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${gameId}`;
 
@@ -14,14 +14,20 @@ export default async function isRoundOverFunction(gameId: number, round: number)
         // Access the 'players' property of 'game_stats'
         const players = gameStats.players;
 
-        // Check if every player has submitted for that round
-        const isRoundOver = players.every(player => player[round].trim() !== '');
+        // Determine player ID
+        let playerId = parseInt(players.find((player) => player.player_username === username).player_id);
 
-        return isRoundOver;
+        //Determine players in game
+        let numberOfPlayers = players.length
+
+        let promptPlayersId = (playerId - 1 === 0) ? parseInt(numberOfPlayers) : playerId - 1
+
+        let drawingPrompt = players.find((player) => player.player_id === promptPlayersId).player_drawing
+
+        return drawingPrompt;
     } catch (error) {
         // Handle errors here
         console.error("Error fetching data:", error);
-        // Return false in case of an error
-        return false;
+        return ;
     }
 }

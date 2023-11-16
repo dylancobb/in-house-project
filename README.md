@@ -50,51 +50,15 @@ This project is primarily built using:
 ## Schema
 
 ```
-Game state sample {
-  "game_id": "12345",
-   "status": "active",
-  "current_round": 3,
-  "players": [
-    {
-      "user_id": 1,
-      "username": "Player1",
-"prompt": "boat on a beach"
-   "drawing_url": "https://example.com/drawings/123.png",
-"guess": "Superman flying"
-
-
-    },
-    {
-      "user_id": 2,
-      "username": "Player2",
-"prompt": "boat on a beach"
-   "drawing_url": "https://example.com/drawings/123.png",
-"guess": "Superman flying"
-
-
-    },
-    {
-      "user_id": 3,
-      "username": "Player1",
-"prompt": "boat on a beach"
-   "drawing_url": "https://example.com/drawings/123.png",
-"guess": "Superman flying"
-
-
-    },
-    {
-      "user_id": 4,
-      "username": "Player1",
-"prompt": "boat on a beach"
-   "drawing_url": "https://example.com/drawings/123.png",
-"guess": "Superman flying"
-
-
-    }
-  ]
-}
+{"game_id":1,
+"game_state":"Result",
+"game_stats":
+{"players":
+[{"player_drawing":"https://t4.ftcdn.net/jpg/01/36/70/67/360_F_136706734_KWhNBhLvY5XTlZVocpxFQK1FfKNOYbMj.jpg","player_guess":"Smiley face","player_id":1,"player_prompt":"Man on the moon","player_avatar":"0","player_username":"Dylan"},
+{"player_drawing":"","player_guess_text":"","player_id":2,"player_prompt":"","player_guess_drawing":"","player_avatar":"0","player_username":"Josh"},{"player_drawing":"","player_guess_text":"","player_id":3,"player_prompt":"","player_guess_drawing":"","player_avatar":"0","player_username":"Ben"}]}}
 
 ```
+
 
 ## Lambda Function used to interact with DynamoDB database
 
@@ -233,6 +197,8 @@ export const handler = async (event, context) => {
 };
 
 ```
+=======
+
 
 ## Credits
 

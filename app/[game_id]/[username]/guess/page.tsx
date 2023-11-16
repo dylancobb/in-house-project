@@ -2,15 +2,14 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
+import fetchDrawingFunction from '@/app/utilities/fetchDrawingFunction'
 import Input from '../../../components/Input'
 import SubmitButton from '../../../components/Button/SubmitButton'
 import turnTakenFunction from '@/app/utilities/turnTakenFunction'
 import isRoundOverFunction from '@/app/utilities/isRoundOver'
-import notepad from '@/public/images/sliderIcons/pen.svg'
 import NextRoundButton from '@/app/components/Button/nextRoundButton'
-import RandomPromptButton from '@/app/components/Button/RandomPromptButton'
 
-export default function Prompt() {
+export default function Guess() {
   const currentUrl = window.location.href
   const parts = currentUrl.split('/')
   let urlGameID = parts[3]
@@ -19,7 +18,10 @@ export default function Prompt() {
   console.log(urlGameID)
   console.log(urlUsername)
 
-  const [prompt, setPrompt] = useState('')
+  const [pictureLoaded, setPictureLoaded] = useState(false)
+  const [drawingPrompt, setDrawingPrompt] = useState('')
+  const [guess, setGuess] = useState('')
+
   const [turnTaken, setTurnTaken] = useState(false)
   const [roundOver, setRoundOver] = useState('')
 
@@ -28,14 +30,14 @@ export default function Prompt() {
       const isTurnTaken = await turnTakenFunction(
         urlGameID,
         urlUsername,
-        'player_prompt'
+        'player_guess'
       )
       console.log('Is turn taken?', isTurnTaken)
       setTurnTaken(isTurnTaken)
 
       const isRoundOver = await isRoundOverFunction(
         parseInt(urlGameID),
-        'player_prompt'
+        'player_guess'
       )
       console.log('Is round over?', isRoundOver)
       setRoundOver(isRoundOver)
@@ -44,10 +46,21 @@ export default function Prompt() {
     fetchData()
   }, [urlGameID, urlUsername])
 
-  function savePrompt() {
-    console.log(prompt)
-    // Update DynamoDB entry for the current player's "player_prompt"
-    const updatePromptInDynamoDB = async () => {
+  useEffect(() => {
+    const fetchDrawing = async () => {
+      const fetchedDrawing = await fetchDrawingFunction(urlGameID, urlUsername)
+      console.log('Fetched drawing:', fetchedDrawing)
+      setDrawingPrompt(fetchedDrawing)
+      setPictureLoaded(true)
+    }
+
+    fetchDrawing()
+  }, [urlGameID, urlUsername])
+
+  function saveGuess() {
+    console.log(guess)
+
+    const updateGuessInDynamoDB = async () => {
       try {
         let apiUrl = `https://4oqenpdzm6.execute-api.eu-west-2.amazonaws.com/dev/items/${urlGameID}`
 
@@ -66,8 +79,8 @@ export default function Prompt() {
             player.player_username === urlUsername
         )
 
-        // Update the "player_prompt" for the current player in memory
-        currentPlayer.player_prompt = prompt
+        // Update the "player_guess" for the current player in memory
+        currentPlayer.player_guess = guess
 
         // Update the DynamoDB entry
         await fetch(apiUrl, {
@@ -85,39 +98,41 @@ export default function Prompt() {
     }
 
     // Call the function to update DynamoDB
-    updatePromptInDynamoDB()
+    updateGuessInDynamoDB()
 
     setTurnTaken(true)
   }
 
   return (
-    <main className='flex min-h-screen flex-col items-center py-10'>
-      <h1 className='text-5xl'>Prompt</h1>
-      <div className='flex flex-col items-center my-6 space-y-5'>
+    <main className='flex min-h-screen flex-col items-center justify-between py-10'>
+      <div className='flex flex-col items-center space-y-5'>
         {turnTaken ? (
-          <h2 className='text-2xl'>
-            Please wait for all players to finish the round...
-          </h2>
+          <p>Please wait for all players to finish the round...</p>
         ) : (
           <>
-            <p className='text-white text-xl'>Write a quirky sentence:</p>
-            <Image
-              src={notepad}
-              alt='notepad'
-              height={100}
-              width={100}
-              priority={true}
-            />
-            <Input setFunction={setPrompt} label='' placeholder='...' />
-            <SubmitButton onClick={savePrompt} />
-            <RandomPromptButton />
+            <h1 className='text-5xl'>Guess!</h1>
+            {!pictureLoaded ? (
+              <p>Loading...</p>
+            ) : (
+              <>
+                <Image
+                  src={drawingPrompt}
+                  alt='Drawing prompt.'
+                  width={300}
+                  height={300}
+                  style={{ backgroundColor: 'white' }}
+                />
+                <Input setFunction={setGuess} label='' placeholder='...' />
+                <SubmitButton onClick={saveGuess} />
+              </>
+            )}
           </>
         )}
         {roundOver ? (
           <NextRoundButton
             urlGameID={urlGameID}
             urlUsername={urlUsername}
-            round='draw'
+            round='results'
           />
         ) : null}
       </div>

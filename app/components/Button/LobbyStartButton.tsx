@@ -1,16 +1,20 @@
 import React from 'react'
+import Image from 'next/image'
+import icon from './arrowBtn.svg'
 
-interface Props {
+interface LobbyStartButtonProps {
+  canClick: boolean
   urlGameID: string
   urlUsername: string
   round: string
 }
 
-const NextRoundButton: React.FC<Props> = ({
+const LobbyStartButton: React.FC<LobbyStartButtonProps> = ({
+  canClick,
   urlGameID,
   urlUsername,
   round,
-}: Props) => {
+}) => {
   const handleClick = async () => {
     console.log('Button clicked!')
 
@@ -45,12 +49,16 @@ const NextRoundButton: React.FC<Props> = ({
 
   return (
     <button
-      className='btn justify-center bg-light_blue my-7'
       onClick={handleClick}
+      className={`flex items-center gap-2 py-1 px-3 h-14 w-36 text-dark_blue
+      ${canClick ? 'bg-green' : 'bg-grey/50 text-black/50'}
+      rounded-md shadow-md shadow-dark_blue`}
+      disabled={!canClick}
     >
-      NEXT ROUND!
+      <Image src={icon} alt='arrow icon' height={40} width={40} />
+      START
     </button>
   )
 }
 
-export default NextRoundButton
+export default LobbyStartButton

@@ -8,16 +8,18 @@
   --dark_blue: #1d3557;
   --blue: #457b9d;
   --orange: #fb8500;
+  --light-grey: #edf6f9;
 }
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(180deg, #1d3557 0%, #2a9d8f 100%);
+  color: var(--light-grey);
+  background: linear-gradient(180deg, var(--dark_blue) 0%, var(--green) 100%);
+}
+
+.btn {
+  @apply flex items-center gap-2 py-1 px-3 h-14 w-36 rounded-md shadow-md shadow-dark_blue text-dark_blue;
+}
+
+.bg-multiply {
+  @apply bg-gradient-to-b from-dark_blue to-green;
 }
